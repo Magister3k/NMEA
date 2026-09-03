@@ -1,0 +1,108 @@
+// Talker ID
+AB;Independent AIS Base Station
+AD;Dependant AIS Base Station
+AG;Autopilot - General
+AI;Mobile AIS Station, Class A or B
+AN;Aid to Navigation AIS Station
+AP;Autopilot - Magnetic
+AR;AIS Receiving Station
+AS;AIS Limited Base Station
+AT;AIS Transmitting Station
+AX;AIS Simplex Repeater Station
+BD;Beidou Positioning System Receiver
+BI;Bilge Systems
+BN;Bridge Navigational Watch Alarm System (BNWAS)
+CA;Central Alarm Management
+CD;Communications - Digital Selective Calling (DSC)
+CR;Communications - Data Receiver
+CS;Communications - Satellite
+CT;Communications - Radio-Telephone MF-HF
+CV;Communications - Radio-Telephone VHF
+CX;Communications - Scanning Receiver
+DE;Decca navigator
+DF;Radio Direction Finder
+DM;Velocity Sensor, Speed Log, Water, Magnetic
+DP;Dynamic Position
+DU;Duplex Repeater Station
+EC;Electronic Chart System (ECS)
+EI;Electronic Chart Display and Information System (ECDIS)
+EP;Emergency Position Indicating Radio Beacon (EPIRB)
+ER;Engine Room Monitoring Systems
+FD;Fire Door Controller/Monitoring Point
+FE;Fire Extinguisher System
+FR;Fire Detection Point
+FR;Franson software
+FS;Fire Sprinkler System
+GA;Galileo positioning system receiver
+GB;BeiDou positioning system receiver
+GC;Unknown positioning system receiver
+GI;NavIC (IRNSS)
+GL;GLONASS Positioning System Receiver
+GN;Global Navigation Satellite System (GNSS)
+GP;Global Positioning System Receiver (GPS)
+GQ;QZSS
+GY;Global Positioning System Receiver (GPS)
+HC;Compass, Magnetic
+HD;Hull Door Controller/Monitoring Panel
+HE;Gyro, North Seeking
+HF;Fluxgate
+HN;Gyro, Non North Seeking
+HS;Hull Stress Monitoring
+II;Integrated Instrumention
+IN;Integrated Navigation
+IO;Input Output Information
+JA;Alarm and Monitoring System
+JB;Reefer Monitoring System
+JC;Power Management System
+JD;Propulsion Control System
+JE;Engine Control Console
+JF;Propulsion Boiler
+JG;Auxiliary Boiler
+JH;Electronic Governor System
+LC;Loran C
+MX;Multiplexer
+NA;Navigation - Unknown
+NL;Navigation Light Controller
+NW;Navigation - Unknown
+QZ;QZSS regional GPS augmentation system
+RA;RADAR and/or ARPA (RADAR plotting)
+RB;Record Book
+RC;Propulsion Machinery Including Remote Control
+RI;Rudder Angle Indicator
+SA;Physical Shore AIS Station
+SD;Sounder, depth
+SE;True Heading
+SG;Steering Gear/Steering Engine
+SN;Electronic Positioning System other - general
+SP;Speed Sensor
+SS;Scanning Sounder
+ST;Skytraq debug output
+TC;Track Control System
+TI;Turn Rate Indicator
+TM;Transas VTS / SML tracking system
+TR;TRANSIT Navigation System
+U0;User Configured talker identifier 0
+U1;User Configured talker identifier 1
+U2;User Configured talker identifier 2
+U3;User Configured talker identifier 3
+U4;User Configured talker identifier 4
+U5;User Configured talker identifier 5
+U6;User Configured talker identifier 6
+U7;User Configured talker identifier 7
+U8;User Configured talker identifier 8
+U9;User Configured talker identifier 9
+UP;Microprocessor Controller
+VA;VHF Data Exchange System, ASM
+VD;Velocity Sensor, Doppler, other/general
+VM;Velocity Sensor, Speed Log, Water, Magnetic
+VR;Voyage Data Recorder
+VS;VHF Data Exchange System, Satellite
+VT;VHF Data Exchange System, Terrestrial
+VW;Velocity Sensor, Speed Log, Water, Mechanical
+WD;Watertight Door Controller/Monitoring Panel
+WI;Weather Instruments
+YX;Transducer
+ZA;Timekeeper - Atomic Clock
+ZC;Timekeeper - Chronometer
+ZQ;Timekeeper - Quartz
+ZV;Timekeeper - Radio Update, WWV or WWVH

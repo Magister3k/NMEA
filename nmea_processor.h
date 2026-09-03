@@ -3,12 +3,12 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <map>
 #include <unordered_map>
 #include <mutex>
 #include <chrono>
+#include <functional>
 
-// Структура идентификации TCP-сессии (IP:Port -> IP:Port)
+// Структура уникальной идентификации TCP-сессии (IP:Port -> IP:Port)
 struct TcpSessionKey {
     uint32_t src_ip;
     uint32_t dst_ip;
@@ -30,66 +30,50 @@ namespace std {
     };
 }
 
-// Буфер для накопления потока TCP
+// Скользящий кольцевой буфер накопления для TCP-сессий
 struct TcpStreamBuffer {
     std::string data_accumulator;
     std::chrono::steady_clock::time_point last_activity;
 };
 
-// Структура для Sentence Grouping (многострочные сообщения NMEA-450)
-struct NmeaGroupAssembly {
-    int total_lines = 0;
-    std::chrono::steady_clock::time_point timestamp;
-    std::map<int, std::string> lines; // Номер строки -> Тело NMEA
-};
-
 class nmea_processor {
 public:
+    // Сигнатуры колбэков для трансляции сырых пакетов на следующий уровень (nmea450_decoder)
+    using RawDataChunkCallback = std::function<void(const uint8_t* payload, size_t len)>;
+
     nmea_processor();
     virtual ~nmea_processor() = default;
 
-    // Запрет копирования
+    // Запрет копирования семантики (RAII / Безопасность многопоточности)
     nmea_processor(const nmea_processor&) = delete;
     nmea_processor& operator=(const nmea_processor&) = delete;
 
+    // Регистрация конвейерного обработчика данных
+    void SetOnRawDataChunkReady(RawDataChunkCallback cb);
+
     /**
-     * @brief Обработка входящей монолитной UDP-датаграммы (после твоей IP-дефрагментации)
-     * @param udp_payload Указатель на начало полезной нагрузки UDP (сразу после 8 байт заголовка UDP)
-     * @param udp_len Размер полезной нагрузки UDP
+     * @brief Прием монолитной UDP-датаграммы (после внешней IP-дефрагментации)
      */
     void ProcUdpDatagram(const uint8_t* udp_payload, size_t udp_len);
 
     /**
-     * @brief Обработка куска байтового потока TCP
-     * @param tcp_payload Указатель на сегмент данных TCP
-     * @param tcp_len Размер сегмента данных
+     * @brief Прием куска байтового потока из сетевого TCP-сокета
      */
     void ProcTcpSegment(uint32_t src_ip, uint32_t dst_ip, uint16_t src_port, uint16_t dst_port,
-                           const uint8_t* tcp_payload, size_t tcp_len);
+                        const uint8_t* tcp_payload, size_t tcp_len);
 
-    // Удаление сессии TCP при закрытии соединения (FIN/RST)
+    /**
+     * @brief Принудительное закрытие сессии TCP при разрыве соединения (FIN/RST пакеты)
+     */
     void TerminateTcpSession(uint32_t src_ip, uint32_t dst_ip, uint16_t src_port, uint16_t dst_port);
 
-    // Очистка мертвых буферов по таймауту
+    /**
+     * @brief Сканирование и очистка зависших в памяти пустых/мертвых TCP-сессий
+     */
     void CleanupTimeouts();
-
-protected:
-    // Виртуальный колбэк для интеграции с твоей бизнес-логикой
-    virtual void OnValidNmeaMsg(const std::string& nmea_sentence, const std::string& source_id);
 
 private:
     std::mutex m_mutex;
-
-    // Пулы сессий
+    RawDataChunkCallback m_raw_chunk_cb = nullptr;
     std::unordered_map<TcpSessionKey, TcpStreamBuffer> m_tcp_pool;
-    std::unordered_map<std::string, NmeaGroupAssembly> m_nmea_group_pool;
-
-    // Внутренний конвейер разбора строк
-    void ParseRawTextStream(const std::string& text_stream, const std::string& source_id);
-    void HandleNmea450Packet(const uint8_t* payload, size_t len);
-    void HandleNmea450TagBlock(const std::string& tag_block, const std::string& nmea_sentence);
-    
-    // Валидация
-    bool ValidateNmeaChecksum(const std::string& sentence) const;
-    std::vector<std::string> SplitString(const std::string& str, char delimiter) const;
 };

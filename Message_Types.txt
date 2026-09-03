@@ -1,0 +1,118 @@
+// Message Type
+AAM;Waypoint arrival alarm
+ABM;UAIS Addressed binary and safety related message (Type 6, 12)
+ACK;Alarm acknowledgment
+ADS;Automatic device status
+AKD;Acknowledge detail alarm condition
+ALA;Set detail alarm condition
+ALM;GPS almanac data
+ALR;Set alarm state
+APA;Heading/track controller (Autopilot) Message "A"
+APB;Heading/track controller (Autopilot) Message "B"
+ASD;Autopilot system data
+BBM;UAIS Broadcast Binary Message (Type 8, 14)
+BEC;Bearing and distance to waypoint, dead reckoning
+BOD;Bearing, origin to destination
+BWC;Bearing and distance to waypoint, great circle
+BWR;Bearing and distance to waypoint, rhumb line
+BWW;Bearing, waypoint to waypoint
+CEK;Configure encryption key command
+CMP;OCTANS latitude and speed
+COP;Configure the operational period, command
+CUR;Water current layer
+DBK;Depth below keel
+DBS;Depth below surface
+DBT;Depth below transducer
+DCN;Decca position
+DCR;Device capability report
+DDC;Device dimming control
+DOR;Door status detection
+DPT;Depth of Water
+DSC;Digital Selective Calling information
+DSE;Extended Digital Selective Calling
+DSI;Digital Selective Calling transponder initiate
+DSR;Digital Selective Calling transponder response
+DTM;Datum Reference
+ETL;Engine Telegraph Operation Status
+EVE;General Event Message
+FIR;Fire detetction
+FSI;Frequency set information
+GBS;GNSS satellite fault detection
+GGA;GPS Fix Data
+GLL;Geographic Position - Latitude/Longitude
+GNS;GNSS fix data
+GRS;GNSS range residuals
+GSA;GNSS DOP and active satellites
+GST;GNSS pseudo range error statistics
+GSV;GNSS satellites in view
+GTD;Geographic location in time differences
+HDG;Heading, deviation and variation
+HDM;Heading, magnetic
+HDT;Heading, true
+HFB;Trawl headrope to footrope and bottom
+HMR;Heading monitor - receive
+HMS;Heading monitor - set
+HSC;Heading steering command
+HTC;Heading track control command
+HTD;Heading track control data
+INF;OCTANS status
+ITS;Trawl door spread to distance
+LIN;OCTANS surge, sway and heave
+MDA;Meteorological composite
+MLA;GLONASS almanac data
+MSK;MSK control for a beacon receiver
+MSS;MSK beacon receiver status
+MWD;Wind direction and speed
+MWV;Wind speed and angle
+MTW;Mean temperature of water
+MWD;Mean wind direction and speed
+MWV;Mean wind speed and angle
+NST;Magellan status
+OSD;Own ship data
+RMA;Recommended minimum navigation information
+RMB;Recommended minimum navigation information
+RMC;Recommended minimum GNSS navigation information
+RME;Garmin estimated error
+RME;Garmin altitude
+ROO;Waypoints in active route
+ROT;Rate of turn
+RPM;Revolutions per minute
+RSA;Rudder sensor angle
+RSD;RADAR system data
+RTE;Routes
+SFI;Scanning frequency information
+RSA;Rudder sensor angle
+SHR;RT300 proprietary roll and pitch message
+SPD;OCTANS speed
+STN;Multiple data ID
+TDS;Trawler Door Spread Distance
+TFI;Trawl Filling Indicator
+TLB;Target label
+TLL;Target latitude and longitude
+TPC;Trawl position cartesian coordinates
+TPR;Trawl position relative vessel
+TPT;Trawl position true
+TRO;OCTANS pitch and roll
+TTM;Tracked target message
+TXT;Text transmission
+VBW;Dual ground/water speed
+VDM;UAIS VHF Data-link Message (Type 1-3)
+VDO;UAIS VHF Data-link Own-vessel report (Type 1-3)
+VDR;Set and drift
+VHW;Water speed and heading
+VLW;Distance traveled through water
+VPW;Speed, measured parallel to wind
+VTG;Track made good and ground speed
+VWR;Apparent wind angle and speed
+WCV;Waypoint closure velocity
+WDC;Distance to waypoint, great circle
+WDR;Distance to waypoint, rhumb line
+WNC;Distance, waypoint to waypoint
+WPL;Waypoint location
+XDR;Transducer measurements
+XTE;Cross-track error, measured
+XTR;Cross-track error, dead reckoning
+ZDA;Time & Date - UTC, day, month, year and local time zone
+ZDL;Time and distance to variable point
+ZFO;UTC and time from origin waypoint
+ZTG;UTC and time to destination waypoint
