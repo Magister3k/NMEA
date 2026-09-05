@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.06.00"/>
+    <PROJECT value="..\..\ModuleDllsExt\ExampleExtDll.dll"/>
+    <OBJFILES value="Main.obj SettingsForm.obj BaseModuleExt.obj"/>
+    <RESFILES value="ExampleExtDll.res"/>
+    <IDLFILES value=""/>
+    <IDLGENFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES) SettingsForm.dfm"/>
+    <LIBFILES value=""/>
+    <LIBRARIES value=""/>
+    <SPARELIBS value="rtl.lib vcl.lib bcbsmp.lib vclx.lib"/>
+    <PACKAGES value="vcl.bpi rtl.bpi dbrtl.bpi adortl.bpi vcldb.bpi vclx.bpi bdertl.bpi 
+      vcldbx.bpi ibxpress.bpi dsnap.bpi cds.bpi bdecds.bpi qrpt.bpi teeui.bpi 
+      teedb.bpi tee.bpi dss.bpi teeqr.bpi visualclx.bpi visualdbclx.bpi 
+      bcbsmp.bpi vclie.bpi xmlrtl.bpi inet.bpi inetdbbde.bpi inetdbxpress.bpi 
+      inetdb.bpi nmfast.bpi bcbie.bpi soaprtl.bpi dclocx.bpi dbexpress.bpi 
+      dbxcds.bpi indy.bpi bcb2kaxserver.bpi dsnapcrba.bpi dsnapcon.bpi 
+      webdsnap.bpi websnap.bpi"/>
+    <PATHCPP value=".;"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value="_DEBUG"/>
+    <SYSDEFINES value="NO_STRICT;_RTLDLL;USEPACKAGES"/>
+    <MAINSOURCE value="ExampleExtDll.bpf"/>
+    <INCLUDEPATH value="D:\Work\СКПД\DHF\DHFModules\Modules\ExampleExtDll;$(BCB)\include;$(BCB)\include\vcl;.\include"/>
+    <LIBPATH value="&quot;C:\Program Files\Raize\RC4\Lib\BCB6&quot;;&quot;C:\Program Files\madCollection\madBasic\BCB6&quot;;$(BCB)\Projects\Lib;D:\Work\СКПД\DHF\DHFModules\Modules\ExampleExtDll;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <WARNINGS value="-w-par"/>
+    <OTHERFILES value=""/>
+  </MACROS>
+  <OPTIONS>
+    <IDLCFLAGS value="-ID:\Work\СКПД\DHF\DHFModules\Modules\ExampleExtDll -I$(BCB)\include 
+      -I$(BCB)\include\vcl -I.\include -src_suffix cpp -D_DEBUG -boa"/>
+    <CFLAG1 value="-WD -Od -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- 
+      -tWD -tWM -c"/>
+    <PFLAGS value="-$YD -$W -$O- -$A8 -v -JPHNE -M"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zd"/>
+    <LFLAGS value="-D&quot;&quot; -aa -Tpd -x -Gn -Gi -v"/>
+    <OTHERFILES value=""/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0d32.obj $(PACKAGES) Memmgr.Lib sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mti.lib"/>
+    <OTHERFILES value=""/>
+  </LINKER>
+  <FILELIST>
+      <FILE FILENAME="ExampleExtDll.res" FORMNAME="" UNITNAME="ExampleExtDll.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ExampleExtDll.bpf" FORMNAME="" UNITNAME="ExampleExtDll" CONTAINERID="BPF" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Main.cpp" FORMNAME="" UNITNAME="Main" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="SettingsForm.cpp" FORMNAME="FormSettings" UNITNAME="SettingsForm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="BaseModuleExt.cpp" FORMNAME="" UNITNAME="BaseModuleExt" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+  </FILELIST>
+  <BUILDTOOLS>
+  </BUILDTOOLS>
+
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1049
+CodePage=1251
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[HistoryLists\hlIncludePath]
+Count=3
+Item0=D:\Work\СКПД\DHF\DHFModules\Modules\ExampleExtDll;$(BCB)\include;$(BCB)\include\vcl;.\include
+Item1=D:\Work\СКПД\DHF\DHFModules\Modules\ExampleExtDll;$(BCB)\include;$(BCB)\include\vcl;..\..\ModuleInclude;..\..\ModuleHeaders;..\..\MainConfigXmlDll\include
+Item2=D:\Work\СКПД\DHF\DHFModules\Modules\ExampleExtDll;$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=1
+Item0=C:\Program Files\Raize\RC4\Lib\BCB6;C:\Program Files\madCollection\madBasic\BCB6;$(BCB)\Projects\Lib;D:\Work\СКПД\DHF\DHFModules\Modules\ExampleExtDll;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=1
+Item0=_DEBUG
+
+[HistoryLists\hlFinalOutputDir]
+Count=3
+Item0=..\..\ModuleDllsExt\
+Item1=..\..\bin\ModuleDllsExt\
+Item2=..\..\bin\ModuleDllsExt
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+Launcher=
+UseLauncher=0
+DebugCWD=
+HostApplication=D:\Work\СКПД\DHF\DHFModules\installer\DHF 3\DHF.exe
+RemoteHost=
+RemotePath=
+RemoteLauncher=
+RemoteCWD=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=0
+
+[CORBA]
+AddServerUnit=1
+AddClientUnit=1
+PrecompiledHeaders=1
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
+
+[Linker]
+LibPrefix=
+LibSuffix=
+LibVersion=
+  </IDEOPTIONS>
+</PROJECT>
