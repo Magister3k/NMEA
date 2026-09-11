@@ -1,10 +1,12 @@
 cmake_minimum_required(VERSION 3.15)
 project(HighSpeedNmeaSystem C CXX)
 
-# MSVC project files are kept in msvc/. Its compiled outputs stay in build/msvc.
-# MinGW keeps both generated files and outputs in build/mingw.
+# MSVC and MinGW project files are kept in their own root directories.
+# Compiled outputs stay in build/<toolchain>.
 if(MSVC)
     set(NMEA_OUTPUT_ROOT "${CMAKE_SOURCE_DIR}/build/msvc")
+elseif(MINGW)
+    set(NMEA_OUTPUT_ROOT "${CMAKE_SOURCE_DIR}/build/mingw")
 else()
     set(NMEA_OUTPUT_ROOT "${CMAKE_BINARY_DIR}")
 endif()

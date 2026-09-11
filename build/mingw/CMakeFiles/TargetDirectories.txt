@@ -1,5 +1,0 @@
-D:/Projects/C++/NMEA/build/mingw/CMakeFiles/nmea_high_speed.dir
-D:/Projects/C++/NMEA/build/mingw/CMakeFiles/test_math.dir
-D:/Projects/C++/NMEA/build/mingw/CMakeFiles/test.dir
-D:/Projects/C++/NMEA/build/mingw/CMakeFiles/edit_cache.dir
-D:/Projects/C++/NMEA/build/mingw/CMakeFiles/rebuild_cache.dir

@@ -107,7 +107,7 @@ events:
       The output was:
       0
       Версия MSBuild 18.9.1+a81b43525 для .NET Framework
-      Сборка начата 11.09.2026 19:46:36.
+      Сборка начата 11.09.2026 19:54:43.
       
       Проект "D:\\Projects\\C++\\NMEA\\msvc\\CMakeFiles\\4.4.3\\CompilerIdC\\CompilerIdC.vcxproj" в узле 1 (целевые объекты по умолчанию).
       PrepareForBuild:
@@ -136,7 +136,7 @@ events:
           Предупреждений: 0
           Ошибок: 0
       
-      Прошло времени 00:00:00.83
+      Прошло времени 00:00:00.73
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -1202,7 +1202,7 @@ events:
       The output was:
       0
       Версия MSBuild 18.9.1+a81b43525 для .NET Framework
-      Сборка начата 11.09.2026 19:46:37.
+      Сборка начата 11.09.2026 19:54:44.
       
       Проект "D:\\Projects\\C++\\NMEA\\msvc\\CMakeFiles\\4.4.3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" в узле 1 (целевые объекты по умолчанию).
       PrepareForBuild:
@@ -1231,7 +1231,7 @@ events:
           Предупреждений: 0
           Ошибок: 0
       
-      Прошло времени 00:00:00.85
+      Прошло времени 00:00:00.72
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -1865,8 +1865,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-qz0u32"
-      binary: "D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-qz0u32"
+      source: "D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-mrl9ge"
+      binary: "D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-mrl9ge"
     cmakeVariables:
       CMAKE_CXX_STDLIB_MODULES_JSON: ""
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
@@ -1876,39 +1876,39 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: false
       stdout: |
-        Change Dir: 'D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-qz0u32'
+        Change Dir: 'D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-mrl9ge'
         
-        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_a5921.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
+        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_f47a8.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
         Версия MSBuild 18.9.1+a81b43525 для .NET Framework
-        Сборка начата 11.09.2026 19:46:38.
+        Сборка начата 11.09.2026 19:54:45.
         
-        Проект "D:\\Projects\\C++\\NMEA\\msvc\\CMakeFiles\\CMakeScratch\\TryCompile-qz0u32\\cmTC_a5921.vcxproj" в узле 1 (целевые объекты по умолчанию).
+        Проект "D:\\Projects\\C++\\NMEA\\msvc\\CMakeFiles\\CMakeScratch\\TryCompile-mrl9ge\\cmTC_f47a8.vcxproj" в узле 1 (целевые объекты по умолчанию).
         PrepareForBuild:
           Структурированный вывод включен. Форматирование диагностики компилятора будет отражать иерархию ошибок. Подробнее см. https://aka.ms/cpp/structured-output.
-          Создание каталога "D:\\Projects\\C++\\NMEA\\msvc\\CMakeFiles\\CMakeScratch\\TryCompile-qz0u32\\Debug\\".
-          Создание каталога "cmTC_a5921.dir\\Debug\\cmTC_a5921.tlog\\".
+          Создание каталога "D:\\Projects\\C++\\NMEA\\msvc\\CMakeFiles\\CMakeScratch\\TryCompile-mrl9ge\\Debug\\".
+          Создание каталога "cmTC_f47a8.dir\\Debug\\cmTC_f47a8.tlog\\".
         InitializeBuildStatus:
-          Создание "cmTC_a5921.dir\\Debug\\cmTC_a5921.tlog\\unsuccessfulbuild", так как было задано "AlwaysCreate".
-          Обращение к "cmTC_a5921.dir\\Debug\\cmTC_a5921.tlog\\unsuccessfulbuild".
+          Создание "cmTC_f47a8.dir\\Debug\\cmTC_f47a8.tlog\\unsuccessfulbuild", так как было задано "AlwaysCreate".
+          Обращение к "cmTC_f47a8.dir\\Debug\\cmTC_f47a8.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_a5921.dir\\Debug\\\\" /Fd"cmTC_a5921.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Programs\\cmake\\share\\cmake-4.4\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_f47a8.dir\\Debug\\\\" /Fd"cmTC_f47a8.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Programs\\cmake\\share\\cmake-4.4\\Modules\\CMakeCCompilerABI.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.51.36256 for x64
           (C) Корпорация Майкрософт (Microsoft Corporation).  Все права защищены.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_a5921.dir\\Debug\\\\" /Fd"cmTC_a5921.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Programs\\cmake\\share\\cmake-4.4\\Modules\\CMakeCCompilerABI.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_f47a8.dir\\Debug\\\\" /Fd"cmTC_f47a8.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Programs\\cmake\\share\\cmake-4.4\\Modules\\CMakeCCompilerABI.c"
           CMakeCCompilerABI.c
         Link:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"D:\\Projects\\C++\\NMEA\\msvc\\CMakeFiles\\CMakeScratch\\TryCompile-qz0u32\\Debug\\cmTC_a5921.exe" /INCREMENTAL /ILK:"cmTC_a5921.dir\\Debug\\cmTC_a5921.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-qz0u32/Debug/cmTC_a5921.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-qz0u32/Debug/cmTC_a5921.lib" /MACHINE:X64  /machine:x64 cmTC_a5921.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_a5921.vcxproj -> D:\\Projects\\C++\\NMEA\\msvc\\CMakeFiles\\CMakeScratch\\TryCompile-qz0u32\\Debug\\cmTC_a5921.exe
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"D:\\Projects\\C++\\NMEA\\msvc\\CMakeFiles\\CMakeScratch\\TryCompile-mrl9ge\\Debug\\cmTC_f47a8.exe" /INCREMENTAL /ILK:"cmTC_f47a8.dir\\Debug\\cmTC_f47a8.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-mrl9ge/Debug/cmTC_f47a8.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-mrl9ge/Debug/cmTC_f47a8.lib" /MACHINE:X64  /machine:x64 cmTC_f47a8.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_f47a8.vcxproj -> D:\\Projects\\C++\\NMEA\\msvc\\CMakeFiles\\CMakeScratch\\TryCompile-mrl9ge\\Debug\\cmTC_f47a8.exe
         FinalizeBuildStatus:
-          Файл "cmTC_a5921.dir\\Debug\\cmTC_a5921.tlog\\unsuccessfulbuild" удаляется.
-          Обращение к "cmTC_a5921.dir\\Debug\\cmTC_a5921.tlog\\cmTC_a5921.lastbuildstate".
-        Сборка проекта "D:\\Projects\\C++\\NMEA\\msvc\\CMakeFiles\\CMakeScratch\\TryCompile-qz0u32\\cmTC_a5921.vcxproj" завершена (целевые объекты по умолчанию).
+          Файл "cmTC_f47a8.dir\\Debug\\cmTC_f47a8.tlog\\unsuccessfulbuild" удаляется.
+          Обращение к "cmTC_f47a8.dir\\Debug\\cmTC_f47a8.tlog\\cmTC_f47a8.lastbuildstate".
+        Сборка проекта "D:\\Projects\\C++\\NMEA\\msvc\\CMakeFiles\\CMakeScratch\\TryCompile-mrl9ge\\cmTC_f47a8.vcxproj" завершена (целевые объекты по умолчанию).
         
         Сборка успешно завершена.
             Предупреждений: 0
             Ошибок: 0
         
-        Прошло времени 00:00:00.99
+        Прошло времени 00:00:00.81
         
       exitCode: 0
   -
@@ -1921,7 +1921,7 @@ events:
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
-        link line: [  C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"D:\\Projects\\C++\\NMEA\\msvc\\CMakeFiles\\CMakeScratch\\TryCompile-qz0u32\\Debug\\cmTC_a5921.exe" /INCREMENTAL /ILK:"cmTC_a5921.dir\\Debug\\cmTC_a5921.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-qz0u32/Debug/cmTC_a5921.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-qz0u32/Debug/cmTC_a5921.lib" /MACHINE:X64  /machine:x64 cmTC_a5921.dir\\Debug\\CMakeCCompilerABI.obj] ==> linker [C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe]
+        link line: [  C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"D:\\Projects\\C++\\NMEA\\msvc\\CMakeFiles\\CMakeScratch\\TryCompile-mrl9ge\\Debug\\cmTC_f47a8.exe" /INCREMENTAL /ILK:"cmTC_f47a8.dir\\Debug\\cmTC_f47a8.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-mrl9ge/Debug/cmTC_f47a8.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-mrl9ge/Debug/cmTC_f47a8.lib" /MACHINE:X64  /machine:x64 cmTC_f47a8.dir\\Debug\\CMakeCCompilerABI.obj] ==> linker [C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe]
         linker tool for 'C': C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/VC/Tools/MSVC/14.51.36231/bin/HostX64/x64/link.exe 
         implicit libs: []
         implicit objs: []
@@ -1949,8 +1949,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-d014q8"
-      binary: "D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-d014q8"
+      source: "D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-xwi6dz"
+      binary: "D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-xwi6dz"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /GR /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -1961,39 +1961,39 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: false
       stdout: |
-        Change Dir: 'D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-d014q8'
+        Change Dir: 'D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-xwi6dz'
         
-        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_30f21.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
+        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_1d12e.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
         Версия MSBuild 18.9.1+a81b43525 для .NET Framework
-        Сборка начата 11.09.2026 19:46:39.
+        Сборка начата 11.09.2026 19:54:46.
         
-        Проект "D:\\Projects\\C++\\NMEA\\msvc\\CMakeFiles\\CMakeScratch\\TryCompile-d014q8\\cmTC_30f21.vcxproj" в узле 1 (целевые объекты по умолчанию).
+        Проект "D:\\Projects\\C++\\NMEA\\msvc\\CMakeFiles\\CMakeScratch\\TryCompile-xwi6dz\\cmTC_1d12e.vcxproj" в узле 1 (целевые объекты по умолчанию).
         PrepareForBuild:
           Структурированный вывод включен. Форматирование диагностики компилятора будет отражать иерархию ошибок. Подробнее см. https://aka.ms/cpp/structured-output.
-          Создание каталога "D:\\Projects\\C++\\NMEA\\msvc\\CMakeFiles\\CMakeScratch\\TryCompile-d014q8\\Debug\\".
-          Создание каталога "cmTC_30f21.dir\\Debug\\cmTC_30f21.tlog\\".
+          Создание каталога "D:\\Projects\\C++\\NMEA\\msvc\\CMakeFiles\\CMakeScratch\\TryCompile-xwi6dz\\Debug\\".
+          Создание каталога "cmTC_1d12e.dir\\Debug\\cmTC_1d12e.tlog\\".
         InitializeBuildStatus:
-          Создание "cmTC_30f21.dir\\Debug\\cmTC_30f21.tlog\\unsuccessfulbuild", так как было задано "AlwaysCreate".
-          Обращение к "cmTC_30f21.dir\\Debug\\cmTC_30f21.tlog\\unsuccessfulbuild".
+          Создание "cmTC_1d12e.dir\\Debug\\cmTC_1d12e.tlog\\unsuccessfulbuild", так как было задано "AlwaysCreate".
+          Обращение к "cmTC_1d12e.dir\\Debug\\cmTC_1d12e.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GR /Fo"cmTC_30f21.dir\\Debug\\\\" /Fd"cmTC_30f21.dir\\Debug\\vc145.pdb" /external:W1 /TP /errorReport:queue "D:\\Programs\\cmake\\share\\cmake-4.4\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GR /Fo"cmTC_1d12e.dir\\Debug\\\\" /Fd"cmTC_1d12e.dir\\Debug\\vc145.pdb" /external:W1 /TP /errorReport:queue "D:\\Programs\\cmake\\share\\cmake-4.4\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.51.36256 for x64
           (C) Корпорация Майкрософт (Microsoft Corporation).  Все права защищены.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GR /Fo"cmTC_30f21.dir\\Debug\\\\" /Fd"cmTC_30f21.dir\\Debug\\vc145.pdb" /external:W1 /TP /errorReport:queue "D:\\Programs\\cmake\\share\\cmake-4.4\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GR /Fo"cmTC_1d12e.dir\\Debug\\\\" /Fd"cmTC_1d12e.dir\\Debug\\vc145.pdb" /external:W1 /TP /errorReport:queue "D:\\Programs\\cmake\\share\\cmake-4.4\\Modules\\CMakeCXXCompilerABI.cpp"
           CMakeCXXCompilerABI.cpp
         Link:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"D:\\Projects\\C++\\NMEA\\msvc\\CMakeFiles\\CMakeScratch\\TryCompile-d014q8\\Debug\\cmTC_30f21.exe" /INCREMENTAL /ILK:"cmTC_30f21.dir\\Debug\\cmTC_30f21.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-d014q8/Debug/cmTC_30f21.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-d014q8/Debug/cmTC_30f21.lib" /MACHINE:X64  /machine:x64 cmTC_30f21.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_30f21.vcxproj -> D:\\Projects\\C++\\NMEA\\msvc\\CMakeFiles\\CMakeScratch\\TryCompile-d014q8\\Debug\\cmTC_30f21.exe
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"D:\\Projects\\C++\\NMEA\\msvc\\CMakeFiles\\CMakeScratch\\TryCompile-xwi6dz\\Debug\\cmTC_1d12e.exe" /INCREMENTAL /ILK:"cmTC_1d12e.dir\\Debug\\cmTC_1d12e.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-xwi6dz/Debug/cmTC_1d12e.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-xwi6dz/Debug/cmTC_1d12e.lib" /MACHINE:X64  /machine:x64 cmTC_1d12e.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_1d12e.vcxproj -> D:\\Projects\\C++\\NMEA\\msvc\\CMakeFiles\\CMakeScratch\\TryCompile-xwi6dz\\Debug\\cmTC_1d12e.exe
         FinalizeBuildStatus:
-          Файл "cmTC_30f21.dir\\Debug\\cmTC_30f21.tlog\\unsuccessfulbuild" удаляется.
-          Обращение к "cmTC_30f21.dir\\Debug\\cmTC_30f21.tlog\\cmTC_30f21.lastbuildstate".
-        Сборка проекта "D:\\Projects\\C++\\NMEA\\msvc\\CMakeFiles\\CMakeScratch\\TryCompile-d014q8\\cmTC_30f21.vcxproj" завершена (целевые объекты по умолчанию).
+          Файл "cmTC_1d12e.dir\\Debug\\cmTC_1d12e.tlog\\unsuccessfulbuild" удаляется.
+          Обращение к "cmTC_1d12e.dir\\Debug\\cmTC_1d12e.tlog\\cmTC_1d12e.lastbuildstate".
+        Сборка проекта "D:\\Projects\\C++\\NMEA\\msvc\\CMakeFiles\\CMakeScratch\\TryCompile-xwi6dz\\cmTC_1d12e.vcxproj" завершена (целевые объекты по умолчанию).
         
         Сборка успешно завершена.
             Предупреждений: 0
             Ошибок: 0
         
-        Прошло времени 00:00:00.71
+        Прошло времени 00:00:00.86
         
       exitCode: 0
   -
@@ -2006,7 +2006,7 @@ events:
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
-        link line: [  C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"D:\\Projects\\C++\\NMEA\\msvc\\CMakeFiles\\CMakeScratch\\TryCompile-d014q8\\Debug\\cmTC_30f21.exe" /INCREMENTAL /ILK:"cmTC_30f21.dir\\Debug\\cmTC_30f21.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-d014q8/Debug/cmTC_30f21.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-d014q8/Debug/cmTC_30f21.lib" /MACHINE:X64  /machine:x64 cmTC_30f21.dir\\Debug\\CMakeCXXCompilerABI.obj] ==> linker [C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe]
+        link line: [  C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"D:\\Projects\\C++\\NMEA\\msvc\\CMakeFiles\\CMakeScratch\\TryCompile-xwi6dz\\Debug\\cmTC_1d12e.exe" /INCREMENTAL /ILK:"cmTC_1d12e.dir\\Debug\\cmTC_1d12e.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-xwi6dz/Debug/cmTC_1d12e.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"D:/Projects/C++/NMEA/msvc/CMakeFiles/CMakeScratch/TryCompile-xwi6dz/Debug/cmTC_1d12e.lib" /MACHINE:X64  /machine:x64 cmTC_1d12e.dir\\Debug\\CMakeCXXCompilerABI.obj] ==> linker [C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe]
         linker tool for 'CXX': C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/VC/Tools/MSVC/14.51.36231/bin/HostX64/x64/link.exe 
         implicit libs: []
         implicit objs: []
