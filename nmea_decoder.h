@@ -5,9 +5,15 @@
 #include <functional>
 #include "NmeaAisStructures.h"
 
+struct NmeaHeaderInfo {
+    std::string raw_sentence;
+    std::string talker_id;
+    std::string message_type;
+};
+
 class nmea_decoder {
 public:
-    // Сигнатуры событий для подписки верхнего уровня
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     using HeaderParsedCallback = std::function<void(const NmeaHeaderInfo&)>;
     using StandardMessageCallback = std::function<void(const std::string& talker, const std::string& type, const std::vector<std::string>& fields)>;
     using AisStringDetectedCallback = std::function<void(const std::string& ais_payload)>;
@@ -15,23 +21,23 @@ public:
     nmea_decoder() = default;
     ~nmea_decoder() = default;
 
-    // Запрет копирования
+    // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     nmea_decoder(const nmea_decoder&) = delete;
     nmea_decoder& operator=(const nmea_decoder&) = delete;
 
-    // Регистрация колбэков
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     void SetOnHeaderParsed(HeaderParsedCallback cb);
     void SetOnStandardMessage(StandardMessageCallback cb);
     void SetOnAisStringDetected(AisStringDetectedCallback cb);
 
     /**
-     * @brief Разбор чистой строки NMEA 0183 (полученной из файла или очищенной от NMEA-450 тегов).
-     * @param sentence Строка, начинающаяся строго с '$' или '!'
+     * @brief пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ NMEA 0183 (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ NMEA-450 пїЅпїЅпїЅпїЅпїЅ).
+     * @param sentence пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ '$' пїЅпїЅпїЅ '!'
      */
     void ParseSentence(const std::string& sentence);
 
 private:
-    // Внутренние утилиты валидации и токенизации текста
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     bool ValidateChecksum(const std::string& sentence) const;
     std::vector<std::string> SplitString(const std::string& str, char delimiter) const;
 

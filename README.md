@@ -92,10 +92,22 @@ graph LR
 Для полной оптимизации Compile-time полиморфизма и автоматической векторизации математических рядов Тейлора, проект необходимо компилировать строго в конфигурации **Release** с флагами агрессивной математической оптимизации:
 
 ```cmake
-mkdir build
-cd build
-cmake -DCMAKE_BUILD_TYPE=Release ..
-cmake --build . --clean-first
+cmake -S . -B build/mingw -G "MinGW Makefiles"
+cmake --build build/mingw --config Release --clean-first
 ```
 
 В соответствии с заложенными флагами `CMakeLists.txt`, на Windows включится режим `/fp:fast` и инструкции `AVX2`, а на Linux — флаги `-O3`, `-ffast-math` и векторизация `-ftree-vectorize`, что развернет тригонометрический контур в параллельные регистры процессора.
+Для MSVC используйте отдельный build tree:
+
+```powershell
+cmake -S . -B build/msvc -G "Visual Studio 18 2026" -A x64
+cmake --build build/msvc --config Release --clean-first
+```
+
+Результаты сборки раскладываются автоматически:
+
+- исполняемые файлы и DLL: `build/<toolchain>/release`;
+- библиотеки импорта: `build/<toolchain>/archive`;
+- статические библиотеки: `build/<toolchain>/lib`.
+
+MSVC-специфичные инструкции находятся в `msvc/`.

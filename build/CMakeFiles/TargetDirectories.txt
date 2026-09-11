@@ -1,5 +1,0 @@
-D:/Projects/C++/NMEA/build/CMakeFiles/nmea_high_speed.dir
-D:/Projects/C++/NMEA/build/CMakeFiles/test_math.dir
-D:/Projects/C++/NMEA/build/CMakeFiles/RUN_TESTS.dir
-D:/Projects/C++/NMEA/build/CMakeFiles/ALL_BUILD.dir
-D:/Projects/C++/NMEA/build/CMakeFiles/ZERO_CHECK.dir
