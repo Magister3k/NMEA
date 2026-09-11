@@ -1,11 +1,17 @@
 cmake_minimum_required(VERSION 3.15)
 project(HighSpeedNmeaSystem C CXX)
 
-# Все артефакты находятся внутри выбранного build tree:
-# build/mingw или build/msvc.
-set(NMEA_RELEASE_DIR "${CMAKE_BINARY_DIR}/release")
-set(NMEA_ARCHIVE_DIR "${CMAKE_BINARY_DIR}/archive")
-set(NMEA_LIB_DIR "${CMAKE_BINARY_DIR}/lib")
+# MSVC project files are kept in msvc/. Its compiled outputs stay in build/msvc.
+# MinGW keeps both generated files and outputs in build/mingw.
+if(MSVC)
+    set(NMEA_OUTPUT_ROOT "${CMAKE_SOURCE_DIR}/build/msvc")
+else()
+    set(NMEA_OUTPUT_ROOT "${CMAKE_BINARY_DIR}")
+endif()
+
+set(NMEA_RELEASE_DIR "${NMEA_OUTPUT_ROOT}/release")
+set(NMEA_ARCHIVE_DIR "${NMEA_OUTPUT_ROOT}/archive")
+set(NMEA_LIB_DIR "${NMEA_OUTPUT_ROOT}/lib")
 
 foreach(CONFIG Debug Release RelWithDebInfo MinSizeRel)
     string(TOUPPER "${CONFIG}" CONFIG_UPPER)
