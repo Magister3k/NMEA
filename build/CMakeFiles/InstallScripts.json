@@ -1,7 +1,7 @@
 {
 	"InstallScripts" : 
 	[
-		"D:/Projects/C++/NMEA/build/cmake_install.cmake"
+		"D:/Projects/C++/NMEA_DHF/build/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

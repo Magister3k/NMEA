@@ -1,0 +1,10 @@
+^D:\PROJECTS\C++\NMEA_DHF\BUILD\CMAKEFILES\D1C4887C02F6E14E20488F59859EA716\GENERATE.STAMP.RULE
+setlocal
+D:\Programs\cmake\bin\cmake.exe -SD:/Projects/C++/NMEA_DHF -BD:/Projects/C++/NMEA_DHF/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/Projects/C++/NMEA_DHF/build/HighSpeedNmeaSystem.slnx
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

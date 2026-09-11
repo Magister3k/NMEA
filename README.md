@@ -47,7 +47,7 @@ graph LR
 - **`nmea_processor.h` / `nmea_processor.cpp`** — Базовое сетевое ядро транспортного уровня L4. Управляет пулом TCP/UDP сессий.
 - **`nmea_service.h` / `nmea_service.cpp`** — Управляющий сервис-расширение. Запускает и безопасно останавливает фоновый поток очистки таймаутов (Garbage Collector).
 - **`nmea450_decoder.h` / `nmea450_decoder.cpp`** — Сетевой декодер L5 (IEC 61162-450). Отвечает за разбор TAG-блоков и Sentence Grouping (теги `g:`).
-- **`nmea_decoder.h` / `nmea_decoder.cpp`** — Базовый текстовый парсер L7. Отвечает за валидацию XOR-чексуммы, токенизацию полей и маршрутизацию пакетов.
+- **`NMEA/nmea_decoder.h` / `NMEA/nmea_decoder.cpp`** — Базовый текстовый парсер L7. Отвечает за валидацию XOR-чексуммы, токенизацию полей и маршрутизацию пакетов.
 - **`high_speed_geo_parser.h` / `high_speed_geo_parser.cpp`** — Высокоскоростное ядро прикладной математики. Агрегирует разбор 32 типов сообщений (включая *Fugro, Trimble, Leica, Furuno*) и обратную проекцию Гаусса-Крюгера/UTM.
 - **`ais_decoder.h` / `ais_decoder.cpp`** — Модуль бинарного декодирования ITU-R M.1371 (сообщения 1-5, 18, 19, 27). Осуществляет побитовый разбор 6-bit ASCII потоков.
 - **`NmeaAisStructures.h`** — Заголовочный файл структур данных результатов бинарного разбора АИС (`AisPositionReport`, `AisStaticDataReport`).
@@ -92,10 +92,22 @@ graph LR
 Для полной оптимизации Compile-time полиморфизма и автоматической векторизации математических рядов Тейлора, проект необходимо компилировать строго в конфигурации **Release** с флагами агрессивной математической оптимизации:
 
 ```cmake
-mkdir build
-cd build
-cmake -DCMAKE_BUILD_TYPE=Release ..
-cmake --build . --clean-first
+cmake --preset mingw
+cmake --build --preset mingw-release --clean-first
 ```
 
 В соответствии с заложенными флагами `CMakeLists.txt`, на Windows включится режим `/fp:fast` и инструкции `AVX2`, а на Linux — флаги `-O3`, `-ffast-math` и векторизация `-ftree-vectorize`, что развернет тригонометрический контур в параллельные регистры процессора.
+Для MSVC используйте отдельный build tree:
+
+```powershell
+cmake --preset msvc
+cmake --build --preset msvc-release --clean-first
+```
+
+Результаты сборки раскладываются автоматически:
+
+- исполняемые файлы: `build/<toolchain>/release` (`RUNTIME_OUTPUT_DIRECTORY`);
+- динамические библиотеки: `build/<toolchain>/lib` (`LIBRARY_OUTPUT_DIRECTORY`);
+- импортные и статические библиотеки: `build/<toolchain>/archive` (`ARCHIVE_OUTPUT_DIRECTORY`).
+
+MSVC-специфичные инструкции находятся в `msvc/`. Пример DHF находится в `DHF/_example/`, код DLL-модуля находится в корне проекта.

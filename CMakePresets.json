@@ -1,0 +1,51 @@
+{
+    "version": 6,
+    "configurePresets": [
+        {
+            "name": "mingw",
+            "displayName": "MinGW",
+            "generator": "MinGW Makefiles",
+            "binaryDir": "${sourceDir}/build/mingw",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "msvc",
+            "displayName": "MSVC x64",
+            "generator": "Visual Studio 18 2026",
+            "architecture": "x64",
+            "binaryDir": "${sourceDir}/build/msvc"
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "mingw-release",
+            "configurePreset": "mingw",
+            "configuration": "Release"
+        },
+        {
+            "name": "msvc-release",
+            "configurePreset": "msvc",
+            "configuration": "Release"
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "mingw-release",
+            "configurePreset": "mingw",
+            "configuration": "Release",
+            "output": {
+                "outputOnFailure": true
+            }
+        },
+        {
+            "name": "msvc-release",
+            "configurePreset": "msvc",
+            "configuration": "Release",
+            "output": {
+                "outputOnFailure": true
+            }
+        }
+    ]
+}

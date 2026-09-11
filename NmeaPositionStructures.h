@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <string>
+#include <cstdint>
 
 struct NmeaPositionReport {
     // Базовый навигационный и текстовый контур

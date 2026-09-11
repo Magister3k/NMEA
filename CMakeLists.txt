@@ -1,59 +1,91 @@
 cmake_minimum_required(VERSION 3.15)
 project(HighSpeedNmeaSystem C CXX)
 
+# Р’СЃРµ Р°СЂС‚РµС„Р°РєС‚С‹ РЅР°С…РѕРґСЏС‚СЃСЏ РІРЅСѓС‚СЂРё РІС‹Р±СЂР°РЅРЅРѕРіРѕ build tree:
+# build/mingw РёР»Рё build/msvc.
+set(NMEA_RELEASE_DIR "${CMAKE_BINARY_DIR}/release")
+set(NMEA_ARCHIVE_DIR "${CMAKE_BINARY_DIR}/archive")
+set(NMEA_LIB_DIR "${CMAKE_BINARY_DIR}/lib")
+
+foreach(CONFIG Debug Release RelWithDebInfo MinSizeRel)
+    string(TOUPPER "${CONFIG}" CONFIG_UPPER)
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_${CONFIG_UPPER} "${NMEA_RELEASE_DIR}")
+    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_${CONFIG_UPPER} "${NMEA_LIB_DIR}")
+    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_${CONFIG_UPPER} "${NMEA_ARCHIVE_DIR}")
+endforeach()
+
+function(nmea_set_target_output_directories TARGET_NAME)
+    set_target_properties(${TARGET_NAME} PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY "${NMEA_RELEASE_DIR}"
+        LIBRARY_OUTPUT_DIRECTORY "${NMEA_LIB_DIR}"
+        ARCHIVE_OUTPUT_DIRECTORY "${NMEA_ARCHIVE_DIR}"
+    )
+endfunction()
+
 # ====================================================================
-# 1. ГЛОБАЛЬНЫЕ НАСТРОЙКИ СТАНДАРТОВ
+# 1. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 # ====================================================================
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
-# Определение исходных файлов проекта
+# пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 set(PROJECT_SOURCES
-    main.cpp
-    nmea_processor.cpp
-    nmea_service.cpp
-    nmea450_decoder.cpp
-    nmea_decoder.cpp
-    ais_decoder.cpp
-    high_speed_geo_parser.cpp
+    NMEA/main.cpp
+    NMEA/nmea_processor.cpp
+    NMEA/nmea_service.cpp
+    NMEA/nmea450_decoder.cpp
+    NMEA/nmea_decoder.cpp
+    NMEA/ais_decoder.cpp
+    NMEA/high_speed_geo_parser.cpp
 )
 
-# Создание исполняемого файла
+# пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 add_executable(nmea_high_speed ${PROJECT_SOURCES})
+nmea_set_target_output_directories(nmea_high_speed)
+target_include_directories(nmea_high_speed PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/NMEA
+)
 
 # ====================================================================
-# 2. НАСТРОЙКА АГРЕССИВНОЙ КОМПИЛЯЦИИ И FAST-MATH
+# 2. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ FAST-MATH
 # ====================================================================
 if(MSVC)
     target_compile_options(nmea_high_speed PRIVATE 
-        /O2          # Максимальная оптимизация по скорости
-        /Oi          # Генерация встроенных (intrinsic) функций
-        /Ot          # Преимущество оптимизации скорости перед размером
-        /fp:fast     # Эквивалент -ffast-math для компилятора MSVC
-        /arch:AVX2   # Включение инструкций AVX2 (включая аппаратный FMA)
-        /nologo      # Подавление вывода заголовка компилятора
-        /W3          # Третий уровень предупреждений
+        /O2          # пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        /Oi          # пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (intrinsic) пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        /Ot          # пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        /fp:fast     # пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ -ffast-math пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ MSVC
+        /arch:AVX2   # пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ AVX2 (пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ FMA)
+        /nologo      # пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        /W3          # пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     )
-    message(STATUS "[MSVC OPTIMIZATION] Включен высокоскоростной математический режим /fp:fast и инструкции AVX2.")
+    message(STATUS "[MSVC OPTIMIZATION] пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ /fp:fast пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ AVX2.")
 else()
-    # Настройки для компиляторов GCC и Clang (Linux / MinGW)
+    # пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ GCC пїЅ Clang (Linux / MinGW)
     target_compile_options(nmea_high_speed PRIVATE 
-        -O3                 # Максимальный уровень оптимизации компилятора
-        -ffast-math         # Включение высокоскоростной математики (IEEE 754 bypass)
-        -march=native       # Оптимизация под текущую архитектуру процессора хоста
-        -ftree-vectorize    # Агрессивная авто-векторизация циклов процессором
-        -Wall               # Включение всех базовых предупреждений
-        -Wextra             # Дополнительные предупреждения для чистоты кода
+        -O3                 # пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        -ffast-math         # пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (IEEE 754 bypass)
+        -march=native       # пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+        -ftree-vectorize    # пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        -Wall               # пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        -Wextra             # пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     )
-    # Линковка системной библиотеки POSIX потоков для работы фонового GC
+    # пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ POSIX пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ GC
     target_link_libraries(nmea_high_speed PRIVATE pthread)
-    message(STATUS "[GCC/CLANG OPTIMIZATION] Включены флаги -O3, -ffast-math и авто-векторизация под архитектуру -march=native.")
+    message(STATUS "[GCC/CLANG OPTIMIZATION] пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ -O3, -ffast-math пїЅ пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ -march=native.")
 endif()
 
-# Добавление отдельного исполняемого файла для юнит-теста математики
-add_executable(test_math test_vectorized_math.cpp)
+# пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+add_executable(test_math NMEA/test_vectorized_math.cpp)
+nmea_set_target_output_directories(test_math)
+
+target_include_directories(test_math PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/NMEA
+)
 
 if(MSVC)
     target_compile_options(test_math PRIVATE /O2 /fp:fast /arch:AVX2)
@@ -61,6 +93,43 @@ else()
     target_compile_options(test_math PRIVATE -O3 -ffast-math -march=native -ftree-vectorize)
 endif()
 
-# Регистрация автоматического запуска (Опционально, для CTest)
+# пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ CTest)
 enable_testing()
 add_test(NAME GeodeticMathVerification COMMAND test_math)
+
+if(WIN32)
+    add_library(nmea_decoder_ext SHARED
+        Main.cpp
+        NmeaModuleExt.cpp
+        NMEA/nmea_decoder.cpp
+        NMEA/nmea450_decoder.cpp
+    )
+
+    target_include_directories(nmea_decoder_ext PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/NMEA
+        ${CMAKE_CURRENT_SOURCE_DIR}/DHF/_example/include
+        ${CMAKE_CURRENT_SOURCE_DIR}/DHF/_example
+    )
+    target_compile_features(nmea_decoder_ext PRIVATE cxx_std_17)
+    target_compile_definitions(nmea_decoder_ext PRIVATE NMEA_DECODER_EXT_BUILD)
+    set_target_properties(nmea_decoder_ext PROPERTIES
+        OUTPUT_NAME "NmeaDecoderExt"
+        RUNTIME_OUTPUT_DIRECTORY "${NMEA_RELEASE_DIR}"
+        LIBRARY_OUTPUT_DIRECTORY "${NMEA_LIB_DIR}"
+        ARCHIVE_OUTPUT_DIRECTORY "${NMEA_ARCHIVE_DIR}"
+    )
+
+    foreach(CONFIG Debug Release RelWithDebInfo MinSizeRel)
+        string(TOUPPER "${CONFIG}" CONFIG_UPPER)
+        set_target_properties(nmea_decoder_ext PROPERTIES
+            RUNTIME_OUTPUT_DIRECTORY_${CONFIG_UPPER} "${NMEA_RELEASE_DIR}"
+            LIBRARY_OUTPUT_DIRECTORY_${CONFIG_UPPER} "${NMEA_LIB_DIR}"
+            ARCHIVE_OUTPUT_DIRECTORY_${CONFIG_UPPER} "${NMEA_ARCHIVE_DIR}"
+        )
+    endforeach()
+
+    if(MINGW)
+        set_target_properties(nmea_decoder_ext PROPERTIES PREFIX "")
+    endif()
+endif()
