@@ -3,45 +3,45 @@
 #include <string>
 #include <vector>
 #include <functional>
-#include "NmeaAisStructures.h"
+#include "ais_structures.h"
 
 struct NmeaHeaderInfo {
-    std::string raw_sentence;
+    std::string msg;
     std::string talker_id;
-    std::string message_type;
+    std::string msg_type;
 };
 
-class nmea_decoder {
+class NmeaMsgParser {
 public:
-    // ��������� ������� ��� �������� �������� ������
+    // 
     using HeaderParsedCallback = std::function<void(const NmeaHeaderInfo&)>;
-    using StandardMessageCallback = std::function<void(const std::string& talker, const std::string& type, const std::vector<std::string>& fields)>;
-    using AisStringDetectedCallback = std::function<void(const std::string& ais_payload)>;
+    using StandardMsgCallback = std::function<void(const std::string& talker, const std::string& type, const std::vector<std::string>& fields)>;
+    using AisMsgCallback = std::function<void(const std::string& ais_payload)>;
 
-    nmea_decoder() = default;
-    ~nmea_decoder() = default;
+    NmeaMsgParser() = default;
+    ~NmeaMsgParser() = default;
 
-    // ������ �����������
-    nmea_decoder(const nmea_decoder&) = delete;
-    nmea_decoder& operator=(const nmea_decoder&) = delete;
+    // 
+    NmeaMsgParser(const NmeaMsgParser&) = delete;
+    NmeaMsgParser& operator=(const NmeaMsgParser&) = delete;
 
-    // ����������� ��������
+    // 
     void SetOnHeaderParsed(HeaderParsedCallback cb);
-    void SetOnStandardMessage(StandardMessageCallback cb);
-    void SetOnAisStringDetected(AisStringDetectedCallback cb);
+    void SetOnStandardMsg(StandardMsgCallback cb);
+    void SetOnAisMsg(AisMsgCallback cb);
 
     /**
-     * @brief ������ ������ ������ NMEA 0183 (���������� �� ����� ��� ��������� �� NMEA-450 �����).
-     * @param sentence ������, ������������ ������ � '$' ��� '!'
+     * @brief NMEA 0183 (NMEA-450).
+     * @param msg, '$' '!'
      */
-    void ParseSentence(const std::string& sentence);
+    void ParseMsg(const std::string& msg);
 
 private:
-    // ���������� ������� ��������� � ����������� ������
-    bool ValidateChecksum(const std::string& sentence) const;
+    // 
+    bool ValidateChecksum(const std::string& msg) const;
     std::vector<std::string> SplitString(const std::string& str, char delimiter) const;
 
     HeaderParsedCallback m_header_cb = nullptr;
-    StandardMessageCallback m_standard_cb = nullptr;
-    AisStringDetectedCallback m_ais_cb = nullptr;
+    StandardMsgCallback m_standard_cb = nullptr;
+    AisMsgCallback m_ais_cb = nullptr;
 };

@@ -36,17 +36,17 @@ struct TcpStreamBuffer {
     std::chrono::steady_clock::time_point last_activity;
 };
 
-class nmea_processor {
+class NmeaProcessor {
 public:
     // Сигнатуры колбэков для трансляции сырых пакетов на следующий уровень (nmea450_decoder)
     using RawDataChunkCallback = std::function<void(const uint8_t* payload, size_t len)>;
 
-    nmea_processor();
-    virtual ~nmea_processor() = default;
+    NmeaProcessor();
+    virtual ~NmeaProcessor() = default;
 
     // Запрет копирования семантики (RAII / Безопасность многопоточности)
-    nmea_processor(const nmea_processor&) = delete;
-    nmea_processor& operator=(const nmea_processor&) = delete;
+    NmeaProcessor(const NmeaProcessor&) = delete;
+    NmeaProcessor& operator=(const NmeaProcessor&) = delete;
 
     // Регистрация конвейерного обработчика данных
     void SetOnRawDataChunkReady(RawDataChunkCallback cb);

@@ -7,9 +7,9 @@
 #include <memory>
 
 // Опережающее объявление, чтобы не раздувать инклуды в заголовке
-class nmea450_decoder;
+class Nmea450Decoder;
 
-class nmea_service : public nmea_processor {
+class NmeaService : public NmeaProcessor {
 public:
     nmea_service();
     ~nmea_service();
@@ -22,7 +22,7 @@ public:
      * @brief Запуск фонового низкоприоритетного потока очистки таймаутов
      * @param net_meta_decoder Указатель на декодер L5, чьи таймауты сборки предложений (g:) тоже нужно чистить
      */
-    void StartTimeoutCleaner(std::shared_ptr<nmea450_decoder> net_meta_decoder = nullptr);
+    void StartTimeoutCleaner(std::shared_ptr<Nmea450Decoder> net_meta_decoder = nullptr);
     
     /**
      * @brief Принудительный останов фонового потока (вызывается также автоматически в деструкторе)
@@ -40,5 +40,5 @@ private:
     std::condition_variable m_cv;
 
     // Слабая ссылка на декодер NMEA-450 для безопасной очистки его пула из фонового потока
-    std::shared_ptr<nmea450_decoder> m_net_meta_decoder = nullptr;
+    std::shared_ptr<Nmea450Decoder> m_net_meta_decoder = nullptr;
 };

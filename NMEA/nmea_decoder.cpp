@@ -1,66 +1,66 @@
 #include "nmea_decoder.h"
 #include <sstream>
 
-void nmea_decoder::SetOnHeaderParsed(HeaderParsedCallback cb) { m_header_cb = cb; }
-void nmea_decoder::SetOnStandardMessage(StandardMessageCallback cb) { m_standard_cb = cb; }
-void nmea_decoder::SetOnAisStringDetected(AisStringDetectedCallback cb) { m_ais_cb = cb; }
+void NmeaMsgParser::SetOnHeaderParsed(HeaderParsedCallback cb) { m_header_cb = cb; }
+void NmeaMsgParser::SetOnStandardMsg(StandardMsgCallback cb) { m_standard_cb = cb; }
+void NmeaMsgParser::SetOnAisMsg(AisMsgCallback cb) { m_ais_cb = cb; }
 
-void nmea_decoder::ParseSentence(const std::string& sentence) {
-    // 1. Первичная валидация структуры и длины
-    if (sentence.length() < 6) return;
-    if (sentence[0] != '$' && sentence[0] != '!') return;
+void NmeaMsgParser::ParseMsg(const std::string& msg) {
+    // 1. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
+    if (msg.length() < 6) return;
+    if (msg[0] != '$' && msg[0] != '!') return;
 
-    // 2. Проверка аппаратной контрольной суммы (XOR)
-    if (!ValidateChecksum(sentence)) return;
+    // 2. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ (XOR)
+    if (!ValidateChecksum(msg)) return;
 
-    // 3. Вырезаем метаданные заголовка (Talker ID и Message Type)
+    // 3. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (Talker ID пїЅ Message Type)
     NmeaHeaderInfo header;
-    header.raw_sentence = sentence;
-    header.talker_id = sentence.substr(1, 2);   // Например, "GP" или "AI"
-    header.message_type = sentence.substr(3, 3); // Например, "GGA" или "VDM"
+    header.msg = msg;
+    header.talker_id = msg.substr(1, 2);   // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, "GP" пїЅпїЅпїЅ "AI"
+    header.msg_type = msg.substr(3, 3); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, "GGA" пїЅпїЅпїЅ "VDM"
 
-    // Эмиссия события разбора заголовка для логгеров или СУБД
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     if (m_header_cb) {
         m_header_cb(header);
     }
 
-    // 4. Отрезаем контрольную сумму в конце строки (все, что после '*' включая саму '*')
-    size_t star_pos = sentence.find('*');
-    std::string body_without_checksum = sentence.substr(0, star_pos);
+    // 4. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ '*' пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ '*')
+    size_t star_pos = msg.find('*');
+    std::string body_without_checksum = msg.substr(0, star_pos);
 
-    // 5. Токенизация: разбиваем строку по запятым на массив полей
+    // 5. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
     std::vector<std::string> fields = SplitString(body_without_checksum, ',');
 
-    // 6. Маршрутизация на основе протокола
-    if (sentence[0] == '!') {
-        // Протокол инкапсулированных данных (Морской AIS: !AIVDM, !AIVDO)
-        if ((header.message_type == "VDM" || header.message_type == "VDO") && fields.size() >= 7) {
+    // 6. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    if (msg[0] == '!') {
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅ AIS: !AIVDM, !AIVDO)
+        if ((header.msg_type == "VDM" || header.msg_type == "VDO") && fields.size() >= 7) {
             if (m_ais_cb) {
-                // Передаем строго 5-е поле, содержащее 6-битную строку
+                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 5-пїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 6-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
                 m_ais_cb(fields[5]);
             }
         }
     } else {
-        // Стандартный текстовый протокол (NMEA 0183: $GPGGA, $GPRMC, $HEHDT)
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (NMEA 0183: $GPGGA, $GPRMC, $HEHDT)
         if (m_standard_cb) {
-            // Передаем Talker ID, тип и массив полей (начиная с индекса 1, так как 0 — это заголовок)
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Talker ID, пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 1, пїЅпїЅпїЅ пїЅпїЅпїЅ 0 пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
             std::vector<std::string> data_fields(fields.begin() + 1, fields.end());
-            m_standard_cb(header.talker_id, header.message_type, data_fields);
+            m_standard_cb(header.talker_id, header.msg_type, data_fields);
         }
     }
 }
 
-bool nmea_decoder::ValidateChecksum(const std::string& sentence) const {
-    size_t star = sentence.find('*');
-    if (star == std::string::npos || star + 3 > sentence.length()) return false;
+bool NmeaMsgParser::ValidateChecksum(const std::string& msg) const {
+    size_t star = msg.find('*');
+    if (star == std::string::npos || star + 3 > msg.length()) return false;
 
     uint8_t checksum = 0;
-    // Считаем XOR всех символов строго между '$'/'!' и '*'
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ XOR пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ '$'/'!' пїЅ '*'
     for (size_t i = 1; i < star; ++i) {
-        checksum ^= static_cast<uint8_t>(sentence[i]);
+        checksum ^= static_cast<uint8_t>(msg[i]);
     }
 
-    std::string hex_str = sentence.substr(star + 1, 2);
+    std::string hex_str = msg.substr(star + 1, 2);
     try {
         unsigned long target_checksum = std::stoul(hex_str, nullptr, 16);
         return checksum == static_cast<uint8_t>(target_checksum);
@@ -69,14 +69,14 @@ bool nmea_decoder::ValidateChecksum(const std::string& sentence) const {
     }
 }
 
-std::vector<std::string> nmea_decoder::SplitString(const std::string& str, char delimiter) const {
+std::vector<std::string> NmeaMsgParser::SplitString(const std::string& str, char delimiter) const {
     std::vector<std::string> tokens;
     std::string token;
     std::istringstream tokenStream(str);
     while (std::getline(tokenStream, token, delimiter)) {
         tokens.push_back(token);
     }
-    // Если строка заканчивалась разделителем (например, ",,"), добавляем пустой токен в конец
+    // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, ",,"), пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
     if (!str.empty() && str.back() == delimiter) {
         tokens.push_back("");
     }

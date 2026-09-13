@@ -4,41 +4,41 @@
 #include <vector>
 #include <functional>
 #include <cstdint>
-#include "NmeaAisStructures.h"
+#include "ais_structures.h"
 
-class ais_decoder {
+class AisDecoder {
 public:
-    // Сигнатуры колбэков для подписки бизнес-логики (паттерн Наблюдатель)
-    using PositionCallback = std::function<void(const AisPositionReport&)>;
-    using StaticDataCallback = std::function<void(const AisStaticDataReport&)>;
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
+    using PosCallback = std::function<void(const AisPosReport&)>;
+    using DataCallback = std::function<void(const AisDataReport&)>;
 
-    ais_decoder() = default;
-    ~ais_decoder() = default;
+    AisDecoder() = default;
+    ~AisDecoder() = default;
 
-    // Запрет копирования семантики (модуль должен быть уникальным)
-    ais_decoder(const ais_decoder&) = delete;
-    ais_decoder& operator=(const ais_decoder&) = delete;
+    // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
+    AisDecoder(const AisDecoder&) = delete;
+    AisDecoder& operator=(const AisDecoder&) = delete;
 
-    // Методы регистрации обработчиков событий
-    void SetOnPositionReport(PositionCallback cb);
-    void SetOnStaticDataReport(StaticDataCallback cb);
+    // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    void SetOnPosReport(PosCallback cb);
+    void SetOnDataReport(DataCallback cb);
 
     /**
-     * @brief Главная точка входа. Декодирует только чистую инкапсулированную полезную нагрузку AIS.
-     * @param ais_payload Шестибитная ASCII строка (например, из 5-го поля NMEA-предложения)
+     * @brief пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ AIS.
+     * @param ais_payload 6-пїЅпїЅпїЅпїЅпїЅпїЅ ASCII пїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ 5-пїЅпїЅ пїЅпїЅпїЅпїЅ NMEA-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
      */
     void DecodePayload(const std::string& ais_payload);
 
 private:
-    // Побитовые и текстовые внутренние утилиты
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     std::vector<uint8_t> ConvertNmeaToSixBit(const std::string& ais_payload) const;
     uint32_t FetchBits(const std::vector<uint8_t>& bit_stream, size_t start_bit, size_t num_bits) const;
     std::string DecodeAisText(const std::vector<uint8_t>& bit_stream, size_t start_bit, size_t num_chars) const;
     
-    double DecodeAisLongitude(int32_t raw_lon) const;
-    double DecodeAisLatitude(int32_t raw_lat) const;
+    double DecodeAisLon(int32_t raw_lon) const;
+    double DecodeAisLat(int32_t raw_lat) const;
 
-    // Зарегистрированные пользовательские колбэки
-    PositionCallback m_position_cb = nullptr;
-    StaticDataCallback m_static_cb = nullptr;
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    PosCallback m_pos_cb = nullptr;
+    DataCallback m_data_cb = nullptr;
 };

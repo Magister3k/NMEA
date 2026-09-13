@@ -1,7 +1,7 @@
 # MinGW
 
-MinGW-specific instructions belong in this directory. Generated build files
-and artifacts belong in `../build/mingw`.
+MinGW-specific generated CMake files belong in this directory. Runtime
+artifacts belong in `../build/mingw`.
 
 Configure from the repository root:
 

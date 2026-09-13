@@ -6,45 +6,45 @@
 #include <functional>
 #include <chrono>
 
-// Структура для Sentence Grouping (многострочные сообщения NMEA-450)
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ Sentence Grouping (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ NMEA-450)
 struct NmeaGroupAssembly {
     int total_lines = 0;
     std::chrono::steady_clock::time_point timestamp;
-    std::map<int, std::string> lines; // Номер строки -> Тело NMEA
+    std::map<int, std::string> lines; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ -> пїЅпїЅпїЅпїЅ NMEA
 };
 
-class nmea450_decoder {
+class Nmea450Decoder {
 public:
-    // Сигналы для передачи очищенного текста в следующий модуль (nmea_decoder)
-    using SentenceAssembledCallback = std::function<void(const std::string& clean_sentence, const std::string& source_id)>;
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (nmea_decoder)
+    using MsgAssembledCallback = std::function<void(const std::string& clean_msg, const std::string& src)>;
 
-    nmea450_decoder() = default;
-    ~nmea450_decoder() = default;
+    Nmea450Decoder() = default;
+    ~Nmea450Decoder() = default;
 
-    // Запрет копирования
-    nmea450_decoder(const nmea450_decoder&) = delete;
-    nmea450_decoder& operator=(const nmea450_decoder&) = delete;
+    // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    Nmea450Decoder(const Nmea450Decoder&) = delete;
+    Nmea450Decoder& operator=(const Nmea450Decoder&) = delete;
 
-    // Регистрация колбэка
-    void SetOnSentenceAssembled(SentenceAssembledCallback cb);
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    void SetOnMsgAssembled(MsgAssembledCallback cb);
 
     /**
-     * @brief Обработка блока данных, полученного из транспортного уровня.
-     * @param payload Указатель на начало полезной нагрузки
-     * @param len Размер полезной нагрузки
+     * @brief пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
+     * @param payload пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+     * @param len пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
      */
-    void ProcessPacket(const uint8_t* payload, size_t len);
+    void ProcPacket(const uint8_t* payload, size_t len);
 
     /**
-     * @brief Метод очистки недособранных многострочных пакетов по таймауту.
-     *        Вызывается внешним планировщиком (nmea_service).
+     * @brief пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+     *        пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (nmea_service).
      */
     void CleanupTimeouts();
 
 private:
-    void HandleTagBlock(const std::string& tag_block, const std::string& nmea_sentence);
-    std::vector<std::string> SplitString(const std::string& str, char delimiter) const;
+    void HandleTagBlock(const std::string& tag_block, const std::string& nmea_msg);
+    std::vector<std::string> SplitStr(const std::string& str, char delimiter) const;
 
-    SentenceAssembledCallback m_assembled_cb = nullptr;
+    MsgAssembledCallback m_assembled_cb = nullptr;
     std::map<std::string, NmeaGroupAssembly> m_nmea_group_pool;
 };

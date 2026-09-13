@@ -22,7 +22,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{83E508D4-E907-3370-9FE6-6FB7403B29BB}</ProjectGuid>
+    <ProjectGuid>{CDF325CB-1EA7-39F0-8645-20CFAC9A0F55}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
@@ -59,25 +59,25 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Projects\C++\NMEA\build\msvc\release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Projects\C++\NMEA_DHF\build\msvc\release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">nmea_high_speed.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">nmea_high_speed</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Projects\C++\NMEA\build\msvc\release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Projects\C++\NMEA_DHF\build\msvc\release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">nmea_high_speed.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">nmea_high_speed</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
-    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Projects\C++\NMEA\build\msvc\release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Projects\C++\NMEA_DHF\build\msvc\release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">nmea_high_speed.dir\MinSizeRel\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">nmea_high_speed</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
-    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Projects\C++\NMEA\build\msvc\release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Projects\C++\NMEA_DHF\build\msvc\release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">nmea_high_speed.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">nmea_high_speed</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
@@ -86,17 +86,17 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
+      <AdditionalIncludeDirectories>D:\Projects\C++\NMEA_DHF;D:\Projects\C++\NMEA_DHF\NMEA;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
-      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <BufferSecurityCheck></BufferSecurityCheck>
       <CallingConvention></CallingConvention>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
-      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExceptionHandling>
+      </ExceptionHandling>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <FloatingPointModel>Fast</FloatingPointModel>
       <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
-      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <MinimalRebuild></MinimalRebuild>
@@ -104,21 +104,23 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <SupportJustMyCode></SupportJustMyCode>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Projects\C++\NMEA_DHF;D:\Projects\C++\NMEA_DHF\NMEA;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Projects\C++\NMEA_DHF;D:\Projects\C++\NMEA_DHF\NMEA;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -128,14 +130,13 @@
     <Link>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <DataExecutionPrevention></DataExecutionPrevention>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
-      <ImportLibrary>D:/Projects/C++/NMEA/build/msvc/archive/nmea_high_speed.lib</ImportLibrary>
+      <ImportLibrary>D:/Projects/C++/NMEA_DHF/build/msvc/archive/nmea_high_speed.lib</ImportLibrary>
       <LinkErrorReporting></LinkErrorReporting>
-      <ProgramDataBaseFile>D:/Projects/C++/NMEA/build/msvc/release/nmea_high_speed.pdb</ProgramDataBaseFile>
+      <ProgramDataBaseFile>D:/Projects/C++/NMEA_DHF/build/msvc/release/nmea_high_speed.pdb</ProgramDataBaseFile>
       <RandomizedBaseAddress></RandomizedBaseAddress>
       <SubSystem>Console</SubSystem>
     </Link>
@@ -145,16 +146,17 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
+      <AdditionalIncludeDirectories>D:\Projects\C++\NMEA_DHF;D:\Projects\C++\NMEA_DHF\NMEA;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <BufferSecurityCheck></BufferSecurityCheck>
       <CallingConvention></CallingConvention>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
-      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExceptionHandling>
+      </ExceptionHandling>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <FloatingPointModel>Fast</FloatingPointModel>
       <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
-      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <MinimalRebuild></MinimalRebuild>
@@ -162,23 +164,23 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <SupportJustMyCode></SupportJustMyCode>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);CMAKE_INTDIR="Release"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Projects\C++\NMEA_DHF;D:\Projects\C++\NMEA_DHF\NMEA;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Projects\C++\NMEA_DHF;D:\Projects\C++\NMEA_DHF\NMEA;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -188,14 +190,13 @@
     <Link>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <DataExecutionPrevention></DataExecutionPrevention>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
-      <ImportLibrary>D:/Projects/C++/NMEA/build/msvc/archive/nmea_high_speed.lib</ImportLibrary>
+      <ImportLibrary>D:/Projects/C++/NMEA_DHF/build/msvc/archive/nmea_high_speed.lib</ImportLibrary>
       <LinkErrorReporting></LinkErrorReporting>
-      <ProgramDataBaseFile>D:/Projects/C++/NMEA/build/msvc/release/nmea_high_speed.pdb</ProgramDataBaseFile>
+      <ProgramDataBaseFile>D:/Projects/C++/NMEA_DHF/build/msvc/release/nmea_high_speed.pdb</ProgramDataBaseFile>
       <RandomizedBaseAddress></RandomizedBaseAddress>
       <SubSystem>Console</SubSystem>
     </Link>
@@ -205,16 +206,17 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
+      <AdditionalIncludeDirectories>D:\Projects\C++\NMEA_DHF;D:\Projects\C++\NMEA_DHF\NMEA;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <BufferSecurityCheck></BufferSecurityCheck>
       <CallingConvention></CallingConvention>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
-      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExceptionHandling>
+      </ExceptionHandling>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <FloatingPointModel>Fast</FloatingPointModel>
       <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
-      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <MinimalRebuild></MinimalRebuild>
@@ -222,23 +224,23 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <SupportJustMyCode></SupportJustMyCode>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Projects\C++\NMEA_DHF;D:\Projects\C++\NMEA_DHF\NMEA;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Projects\C++\NMEA_DHF;D:\Projects\C++\NMEA_DHF\NMEA;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -248,14 +250,13 @@
     <Link>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <DataExecutionPrevention></DataExecutionPrevention>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
-      <ImportLibrary>D:/Projects/C++/NMEA/build/msvc/archive/nmea_high_speed.lib</ImportLibrary>
+      <ImportLibrary>D:/Projects/C++/NMEA_DHF/build/msvc/archive/nmea_high_speed.lib</ImportLibrary>
       <LinkErrorReporting></LinkErrorReporting>
-      <ProgramDataBaseFile>D:/Projects/C++/NMEA/build/msvc/release/nmea_high_speed.pdb</ProgramDataBaseFile>
+      <ProgramDataBaseFile>D:/Projects/C++/NMEA_DHF/build/msvc/release/nmea_high_speed.pdb</ProgramDataBaseFile>
       <RandomizedBaseAddress></RandomizedBaseAddress>
       <SubSystem>Console</SubSystem>
     </Link>
@@ -265,17 +266,17 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
+      <AdditionalIncludeDirectories>D:\Projects\C++\NMEA_DHF;D:\Projects\C++\NMEA_DHF\NMEA;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <BufferSecurityCheck></BufferSecurityCheck>
       <CallingConvention></CallingConvention>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
-      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExceptionHandling>
+      </ExceptionHandling>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <FloatingPointModel>Fast</FloatingPointModel>
       <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
-      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <MinimalRebuild></MinimalRebuild>
@@ -283,21 +284,23 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <SupportJustMyCode></SupportJustMyCode>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Projects\C++\NMEA_DHF;D:\Projects\C++\NMEA_DHF\NMEA;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Projects\C++\NMEA_DHF;D:\Projects\C++\NMEA_DHF\NMEA;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -307,14 +310,13 @@
     <Link>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <DataExecutionPrevention></DataExecutionPrevention>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
-      <ImportLibrary>D:/Projects/C++/NMEA/build/msvc/archive/nmea_high_speed.lib</ImportLibrary>
+      <ImportLibrary>D:/Projects/C++/NMEA_DHF/build/msvc/archive/nmea_high_speed.lib</ImportLibrary>
       <LinkErrorReporting></LinkErrorReporting>
-      <ProgramDataBaseFile>D:/Projects/C++/NMEA/build/msvc/release/nmea_high_speed.pdb</ProgramDataBaseFile>
+      <ProgramDataBaseFile>D:/Projects/C++/NMEA_DHF/build/msvc/release/nmea_high_speed.pdb</ProgramDataBaseFile>
       <RandomizedBaseAddress></RandomizedBaseAddress>
       <SubSystem>Console</SubSystem>
     </Link>
@@ -323,11 +325,11 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="D:\Projects\C++\NMEA\CMakeLists.txt">
+    <CustomBuild Include="D:\Projects\C++\NMEA_DHF\CMakeLists.txt">
       <UseUtf8Encoding>Always</UseUtf8Encoding>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/Projects/C++/NMEA/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/Projects/C++/NMEA_DHF/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-D:\Programs\cmake\bin\cmake.exe -SD:/Projects/C++/NMEA -BD:/Projects/C++/NMEA/build/msvc --check-stamp-file D:/Projects/C++/NMEA/build/msvc/CMakeFiles/generate.stamp
+D:\Programs\cmake\bin\cmake.exe -SD:/Projects/C++/NMEA_DHF -BD:/Projects/C++/NMEA_DHF/msvc --check-stamp-file D:/Projects/C++/NMEA_DHF/msvc/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -335,12 +337,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Programs\cmake\share\cmake-4.4\Modules\CMakeCInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeCXXInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeCommonLanguageInclude.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeGenericSystem.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeInitializeConfigs.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeLanguageInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeRCInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeSystemSpecificInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeSystemSpecificInitialize.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Internal\CMakeCLinkerInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Internal\CMakeCXXLinkerInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Linker\MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Linker\MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Linker\MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-Initialize.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\WindowsPaths.cmake;D:\Projects\C++\NMEA\build\msvc\CMakeFiles\4.4.3\CMakeCCompiler.cmake;D:\Projects\C++\NMEA\build\msvc\CMakeFiles\4.4.3\CMakeCXXCompiler.cmake;D:\Projects\C++\NMEA\build\msvc\CMakeFiles\4.4.3\CMakeRCCompiler.cmake;D:\Projects\C++\NMEA\build\msvc\CMakeFiles\4.4.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Projects\C++\NMEA\build\msvc\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Programs\cmake\share\cmake-4.4\Modules\CMakeCInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeCXXInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeCommonLanguageInclude.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeGenericSystem.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeInitializeConfigs.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeLanguageInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeRCInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeSystemSpecificInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeSystemSpecificInitialize.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Internal\CMakeCLinkerInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Internal\CMakeCXXLinkerInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Linker\MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Linker\MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Linker\MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-Initialize.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\WindowsPaths.cmake;D:\Projects\C++\NMEA_DHF\msvc\CMakeFiles\4.4.3\CMakeCCompiler.cmake;D:\Projects\C++\NMEA_DHF\msvc\CMakeFiles\4.4.3\CMakeCXXCompiler.cmake;D:\Projects\C++\NMEA_DHF\msvc\CMakeFiles\4.4.3\CMakeRCCompiler.cmake;D:\Projects\C++\NMEA_DHF\msvc\CMakeFiles\4.4.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Projects\C++\NMEA_DHF\msvc\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/Projects/C++/NMEA/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/Projects/C++/NMEA_DHF/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-D:\Programs\cmake\bin\cmake.exe -SD:/Projects/C++/NMEA -BD:/Projects/C++/NMEA/build/msvc --check-stamp-file D:/Projects/C++/NMEA/build/msvc/CMakeFiles/generate.stamp
+D:\Programs\cmake\bin\cmake.exe -SD:/Projects/C++/NMEA_DHF -BD:/Projects/C++/NMEA_DHF/msvc --check-stamp-file D:/Projects/C++/NMEA_DHF/msvc/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -348,12 +350,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Programs\cmake\share\cmake-4.4\Modules\CMakeCInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeCXXInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeCommonLanguageInclude.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeGenericSystem.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeInitializeConfigs.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeLanguageInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeRCInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeSystemSpecificInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeSystemSpecificInitialize.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Internal\CMakeCLinkerInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Internal\CMakeCXXLinkerInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Linker\MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Linker\MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Linker\MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-Initialize.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\WindowsPaths.cmake;D:\Projects\C++\NMEA\build\msvc\CMakeFiles\4.4.3\CMakeCCompiler.cmake;D:\Projects\C++\NMEA\build\msvc\CMakeFiles\4.4.3\CMakeCXXCompiler.cmake;D:\Projects\C++\NMEA\build\msvc\CMakeFiles\4.4.3\CMakeRCCompiler.cmake;D:\Projects\C++\NMEA\build\msvc\CMakeFiles\4.4.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Projects\C++\NMEA\build\msvc\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Programs\cmake\share\cmake-4.4\Modules\CMakeCInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeCXXInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeCommonLanguageInclude.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeGenericSystem.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeInitializeConfigs.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeLanguageInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeRCInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeSystemSpecificInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeSystemSpecificInitialize.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Internal\CMakeCLinkerInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Internal\CMakeCXXLinkerInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Linker\MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Linker\MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Linker\MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-Initialize.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\WindowsPaths.cmake;D:\Projects\C++\NMEA_DHF\msvc\CMakeFiles\4.4.3\CMakeCCompiler.cmake;D:\Projects\C++\NMEA_DHF\msvc\CMakeFiles\4.4.3\CMakeCXXCompiler.cmake;D:\Projects\C++\NMEA_DHF\msvc\CMakeFiles\4.4.3\CMakeRCCompiler.cmake;D:\Projects\C++\NMEA_DHF\msvc\CMakeFiles\4.4.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Projects\C++\NMEA_DHF\msvc\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/Projects/C++/NMEA/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/Projects/C++/NMEA_DHF/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-D:\Programs\cmake\bin\cmake.exe -SD:/Projects/C++/NMEA -BD:/Projects/C++/NMEA/build/msvc --check-stamp-file D:/Projects/C++/NMEA/build/msvc/CMakeFiles/generate.stamp
+D:\Programs\cmake\bin\cmake.exe -SD:/Projects/C++/NMEA_DHF -BD:/Projects/C++/NMEA_DHF/msvc --check-stamp-file D:/Projects/C++/NMEA_DHF/msvc/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -361,12 +363,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Programs\cmake\share\cmake-4.4\Modules\CMakeCInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeCXXInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeCommonLanguageInclude.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeGenericSystem.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeInitializeConfigs.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeLanguageInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeRCInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeSystemSpecificInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeSystemSpecificInitialize.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Internal\CMakeCLinkerInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Internal\CMakeCXXLinkerInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Linker\MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Linker\MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Linker\MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-Initialize.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\WindowsPaths.cmake;D:\Projects\C++\NMEA\build\msvc\CMakeFiles\4.4.3\CMakeCCompiler.cmake;D:\Projects\C++\NMEA\build\msvc\CMakeFiles\4.4.3\CMakeCXXCompiler.cmake;D:\Projects\C++\NMEA\build\msvc\CMakeFiles\4.4.3\CMakeRCCompiler.cmake;D:\Projects\C++\NMEA\build\msvc\CMakeFiles\4.4.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Projects\C++\NMEA\build\msvc\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Programs\cmake\share\cmake-4.4\Modules\CMakeCInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeCXXInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeCommonLanguageInclude.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeGenericSystem.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeInitializeConfigs.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeLanguageInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeRCInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeSystemSpecificInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeSystemSpecificInitialize.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Internal\CMakeCLinkerInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Internal\CMakeCXXLinkerInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Linker\MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Linker\MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Linker\MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-Initialize.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\WindowsPaths.cmake;D:\Projects\C++\NMEA_DHF\msvc\CMakeFiles\4.4.3\CMakeCCompiler.cmake;D:\Projects\C++\NMEA_DHF\msvc\CMakeFiles\4.4.3\CMakeCXXCompiler.cmake;D:\Projects\C++\NMEA_DHF\msvc\CMakeFiles\4.4.3\CMakeRCCompiler.cmake;D:\Projects\C++\NMEA_DHF\msvc\CMakeFiles\4.4.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Projects\C++\NMEA_DHF\msvc\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/Projects/C++/NMEA/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/Projects/C++/NMEA_DHF/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-D:\Programs\cmake\bin\cmake.exe -SD:/Projects/C++/NMEA -BD:/Projects/C++/NMEA/build/msvc --check-stamp-file D:/Projects/C++/NMEA/build/msvc/CMakeFiles/generate.stamp
+D:\Programs\cmake\bin\cmake.exe -SD:/Projects/C++/NMEA_DHF -BD:/Projects/C++/NMEA_DHF/msvc --check-stamp-file D:/Projects/C++/NMEA_DHF/msvc/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -374,24 +376,24 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Programs\cmake\share\cmake-4.4\Modules\CMakeCInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeCXXInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeCommonLanguageInclude.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeGenericSystem.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeInitializeConfigs.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeLanguageInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeRCInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeSystemSpecificInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeSystemSpecificInitialize.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Internal\CMakeCLinkerInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Internal\CMakeCXXLinkerInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Linker\MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Linker\MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Linker\MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-Initialize.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\WindowsPaths.cmake;D:\Projects\C++\NMEA\build\msvc\CMakeFiles\4.4.3\CMakeCCompiler.cmake;D:\Projects\C++\NMEA\build\msvc\CMakeFiles\4.4.3\CMakeCXXCompiler.cmake;D:\Projects\C++\NMEA\build\msvc\CMakeFiles\4.4.3\CMakeRCCompiler.cmake;D:\Projects\C++\NMEA\build\msvc\CMakeFiles\4.4.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Projects\C++\NMEA\build\msvc\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Programs\cmake\share\cmake-4.4\Modules\CMakeCInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeCXXInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeCommonLanguageInclude.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeGenericSystem.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeInitializeConfigs.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeLanguageInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeRCInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeSystemSpecificInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\CMakeSystemSpecificInitialize.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Compiler\MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Internal\CMakeCLinkerInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Internal\CMakeCXXLinkerInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Linker\MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Linker\MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Linker\MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Linker\Windows-MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-Initialize.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-MSVC-C.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows-MSVC.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\Windows.cmake;D:\Programs\cmake\share\cmake-4.4\Modules\Platform\WindowsPaths.cmake;D:\Projects\C++\NMEA_DHF\msvc\CMakeFiles\4.4.3\CMakeCCompiler.cmake;D:\Projects\C++\NMEA_DHF\msvc\CMakeFiles\4.4.3\CMakeCXXCompiler.cmake;D:\Projects\C++\NMEA_DHF\msvc\CMakeFiles\4.4.3\CMakeRCCompiler.cmake;D:\Projects\C++\NMEA_DHF\msvc\CMakeFiles\4.4.3\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Projects\C++\NMEA_DHF\msvc\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="D:\Projects\C++\NMEA\main.cpp" />
-    <ClCompile Include="D:\Projects\C++\NMEA\nmea_processor.cpp" />
-    <ClCompile Include="D:\Projects\C++\NMEA\nmea_service.cpp" />
-    <ClCompile Include="D:\Projects\C++\NMEA\nmea450_decoder.cpp" />
-    <ClCompile Include="D:\Projects\C++\NMEA\nmea_decoder.cpp" />
-    <ClCompile Include="D:\Projects\C++\NMEA\ais_decoder.cpp" />
-    <ClCompile Include="D:\Projects\C++\NMEA\high_speed_geo_parser.cpp" />
+    <ClCompile Include="D:\Projects\C++\NMEA_DHF\NMEA\main.cpp" />
+    <ClCompile Include="D:\Projects\C++\NMEA_DHF\NMEA\nmea_processor.cpp" />
+    <ClCompile Include="D:\Projects\C++\NMEA_DHF\NMEA\nmea_service.cpp" />
+    <ClCompile Include="D:\Projects\C++\NMEA_DHF\NMEA\nmea450_decoder.cpp" />
+    <ClCompile Include="D:\Projects\C++\NMEA_DHF\NMEA\nmea_decoder.cpp" />
+    <ClCompile Include="D:\Projects\C++\NMEA_DHF\NMEA\ais_decoder.cpp" />
+    <ClCompile Include="D:\Projects\C++\NMEA_DHF\NMEA\geo_parser.cpp" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="D:\Projects\C++\NMEA\build\msvc\ZERO_CHECK.vcxproj">
-      <Project>{DBD7C4D2-A871-3F13-80F6-ECF61491835B}</Project>
+    <ProjectReference Include="D:\Projects\C++\NMEA_DHF\msvc\ZERO_CHECK.vcxproj">
+      <Project>{5E4EC763-5EA7-38B8-92BE-7CE04E7A2229}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

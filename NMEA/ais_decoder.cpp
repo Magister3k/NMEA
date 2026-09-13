@@ -1,77 +1,76 @@
 #include "ais_decoder.h"
 #include <algorithm>
 
-void ais_decoder::SetOnPositionReport(PositionCallback cb) { m_position_cb = cb; }
-void ais_decoder::SetOnStaticDataReport(StaticDataCallback cb) { m_static_cb = cb; }
+void AisDecoder::SetOnPosReport(PosCallback cb) { m_pos_cb = cb; }
+void AisDecoder::SetOnDataReport(DataCallback cb) { m_data_cb = cb; }
 
-// Метод принимает от l7_text_base вектор полей и ссылку на сквозной отчет
-void ais_decoder::DecodeAndFillReport(const std::vector<std::string>& fields, NmeaPositionReport& report) {
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ l7_text_base пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+void AisDecoder::DecodeAndFillReport(const std::vector<std::string>& fields, NmeaReport& report) {
     if (fields.size() < 6) return;
 
-    // Сохраняем исходное сообщение AIS (чистый 6-битный ASCII блок из 5-го поля)
-    report.ais_raw_payload = fields[5]; 
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ AIS (пїЅпїЅпїЅпїЅпїЅпїЅ 6-пїЅпїЅпїЅпїЅпїЅпїЅ ASCII пїЅпїЅпїЅпїЅ пїЅпїЅ 5-пїЅпїЅ пїЅпїЅпїЅпїЅ)
+    report.ais_msg = fields[5]; 
     report.is_ais = true;
 
-    std::vector<uint8_t> bit_stream = ConvertNmeaToSixBit(report.ais_raw_payload);
+    std::vector<uint8_t> bit_stream = ConvertNmeaToSixBit(report.ais_msg);
     if (bit_stream.empty()) return;
 
     size_t total_bits = bit_stream.size() * 6;
     if (total_bits < 38) return;
 
-    // Извлекаем тип сообщения AIS (биты 0-5)
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ AIS (пїЅпїЅпїЅпїЅ 0-5)
     report.ais_msg_type = FetchBits(bit_stream, 0, 6);
-    r_set_object_id = std::to_string(FetchBits(bit_stream, 6, 24)); // MMSI судна становится object_id
-    report.object_id = r_set_object_id;
+    report.object_id = std::to_string(FetchBits(bit_stream, 6, 24)); // MMSI пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ object_id
 
-    // Разбор динамических координат, скорости и направления (Типы 1, 2, 3)
+    // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅ 1, 2, 3)
     if ((report.ais_msg_type == 1 || report.ais_msg_type == 2 || report.ais_msg_type == 3) && total_bits >= 168) {
-        report.navigational_status = FetchBits(bit_stream, 30, 4);
+        report.nav_status = FetchBits(bit_stream, 30, 4);
         
-        // Извлекаем скорость SOG (шаг 0.1 узла)
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ SOG (пїЅпїЅпїЅ 0.1 пїЅпїЅпїЅпїЅ)
         uint32_t raw_sog = FetchBits(bit_stream, 42, 8);
-        report.speed_knots = (raw_sog == 1023) ? 0.0 : raw_sog / 10.0;
+        report.speed = (raw_sog == 1023) ? 0.0 : raw_sog / 10.0;
         
         int32_t raw_lon = static_cast<int32_t>(FetchBits(bit_stream, 61, 28));
         if (raw_lon & 0x08000000) raw_lon |= 0xF0000000;
-        report.longitude = DecodeAisLongitude(raw_lon);
+        report.lon = DecodeAisLon(raw_lon);
 
         int32_t raw_lat = static_cast<int32_t>(FetchBits(bit_stream, 89, 27));
         if (raw_lat & 0x04000000) raw_lat |= 0xF8000000;
-        report.latitude = DecodeAisLatitude(raw_lat);
+        report.lat = DecodeAisLat(raw_lat);
 
-        // Извлекаем направление COG (шаг 0.1 градуса)
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ COG (пїЅпїЅпїЅ 0.1 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
         uint32_t raw_cog = FetchBits(bit_stream, 116, 12);
-        report.heading_degrees = (raw_cog == 3600) ? 0.0 : raw_cog / 10.0;
+        report.heading = (raw_cog == 3600) ? 0.0 : raw_cog / 10.0;
 
-        report.has_position = true;
+        report.has_pos = true;
     }
-    // Разбор рейсовых данных (Тип 5)
+    // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅ 5)
     else if (report.ais_msg_type == 5 && total_bits >= 420) {
-        report.ais_vessel_name = DecodeAisText(bit_stream, 104, 20);
+        report.ais_ship_name = DecodeAisText(bit_stream, 104, 20);
         report.ais_call_sign = DecodeAisText(bit_stream, 62, 7);
-        report.ais_destination = DecodeAisText(bit_stream, 302, 20);
-        report.has_position = false; // Сообщение статическое, координат в нем нет
+        report.ais_dest = DecodeAisText(bit_stream, 302, 20);
+        report.has_pos = false; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ
     }
-    // Разбор спутникового формата (Тип 27)
+    // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅ 27)
     else if (report.ais_msg_type == 27 && total_bits >= 96) {
         uint32_t raw_sog = FetchBits(bit_stream, 43, 6);
-        report.speed_knots = (raw_sog >= 63) ? 0.0 : static_cast<double>(raw_sog);
+        report.speed = (raw_sog >= 63) ? 0.0 : static_cast<double>(raw_sog);
 
         int32_t raw_lon = static_cast<int32_t>(FetchBits(bit_stream, 49, 18));
         if (raw_lon & 0x00020000) raw_lon |= 0xFFFC0000;
-        report.longitude = (raw_lon == 0x1A838) ? 0.0 : static_cast<double>(raw_lon) / 60.0; // Спутниковое масштабирование
+        report.lon = (raw_lon == 0x1A838) ? 0.0 : static_cast<double>(raw_lon) / 60.0; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
         int32_t raw_lat = static_cast<int32_t>(FetchBits(bit_stream, 67, 17));
         if (raw_lat & 0x00010000) raw_lat |= 0xFFFE0000;
-        report.latitude = (raw_lat == 0xD548) ? 0.0 : static_cast<double>(raw_lat) / 60.0;
+        report.lat = (raw_lat == 0xD548) ? 0.0 : static_cast<double>(raw_lat) / 60.0;
 
         uint32_t raw_cog = FetchBits(bit_stream, 84, 9);
-        report.heading_degrees = (raw_cog >= 511) ? 0.0 : static_cast<double>(raw_cog);
-        report.has_position = true;
+        report.heading = (raw_cog >= 511) ? 0.0 : static_cast<double>(raw_cog);
+        report.has_pos = true;
     }
 }
 
-std::string ais_decoder::DecodeAisText(const std::vector<uint8_t>& bit_stream, size_t start_bit, size_t num_chars) const {
+std::string AisDecoder::DecodeAisText(const std::vector<uint8_t>& bit_stream, size_t start_bit, size_t num_chars) const {
     std::string text = "";
     for (size_t i = 0; i < num_chars; ++i) {
         uint32_t six_bit_char = FetchBits(bit_stream, start_bit + (i * 6), 6);
@@ -88,7 +87,7 @@ std::string ais_decoder::DecodeAisText(const std::vector<uint8_t>& bit_stream, s
     return text;
 }
 
-std::vector<uint8_t> ais_decoder::ConvertNmeaToSixBit(const std::string& ais_payload) const {
+std::vector<uint8_t> AisDecoder::ConvertNmeaToSixBit(const std::string& ais_payload) const {
     std::vector<uint8_t> result;
     result.reserve(ais_payload.length());
     for (char c : ais_payload) {
@@ -101,12 +100,12 @@ std::vector<uint8_t> ais_decoder::ConvertNmeaToSixBit(const std::string& ais_pay
     return result;
 }
 
-uint32_t ais_decoder::FetchBits(const std::vector<uint8_t>& bit_stream, size_t start_bit, size_t num_bits) const {
+uint32_t AisDecoder::FetchBits(const std::vector<uint8_t>& bit_stream, size_t start_bit, size_t num_bits) const {
     uint32_t result = 0;
     for (size_t i = 0; i < num_bits; ++i) {
-        size_t current_bit = start_bit + i;
-        size_t byte_idx = current_bit / 6;    
-        size_t bit_shift = 5 - (current_bit % 6); 
+        size_t cur_bit = start_bit + i;
+        size_t byte_idx = cur_bit / 6;    
+        size_t bit_shift = 5 - (cur_bit % 6); 
 
         if (byte_idx >= bit_stream.size()) return 0;
         uint32_t bit = (bit_stream[byte_idx] >> bit_shift) & 0x01;
@@ -115,12 +114,12 @@ uint32_t ais_decoder::FetchBits(const std::vector<uint8_t>& bit_stream, size_t s
     return result;
 }
 
-double ais_decoder::DecodeAisLongitude(int32_t raw_lon) const {
+double AisDecoder::DecodeAisLon(int32_t raw_lon) const {
     if (raw_lon == 0x6791AC0) return 0.0; 
     return static_cast<double>(raw_lon) / 600000.0;
 }
 
-double ais_decoder::DecodeAisLatitude(int32_t raw_lat) const {
+double AisDecoder::DecodeAisLat(int32_t raw_lat) const {
     if (raw_lat == 0x3412140) return 0.0; 
     return static_cast<double>(raw_lat) / 600000.0;
 }

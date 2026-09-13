@@ -5,7 +5,7 @@
             "name": "mingw",
             "displayName": "MinGW",
             "generator": "MinGW Makefiles",
-            "binaryDir": "${sourceDir}/build/mingw",
+            "binaryDir": "${sourceDir}/mingw",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
             }
@@ -15,7 +15,7 @@
             "displayName": "MSVC x64",
             "generator": "Visual Studio 18 2026",
             "architecture": "x64",
-            "binaryDir": "${sourceDir}/build/msvc"
+            "binaryDir": "${sourceDir}/msvc"
         }
     ],
     "buildPresets": [

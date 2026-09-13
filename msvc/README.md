@@ -1,7 +1,7 @@
 # MSVC
 
-MSVC-specific instructions belong in this directory. Generated Visual Studio
-projects and build artifacts belong in `../build/msvc`.
+MSVC-specific generated Visual Studio project files belong in this directory.
+Runtime artifacts belong in `../build/msvc`.
 
 Configure from the repository root:
 

@@ -3,11 +3,11 @@
 #include <cassert>
 #include <iomanip>
 #include <vector>
-#include "NmeaPositionStructures.h"
+#include "nmea_structures.h"
 
 // Принудительно объявляем функции, которые мы тестируем (копия внутренней логики ядра)
 void ConvertWgs84ToUtm(double lat, double lon, double& easting, double& northing, int& zone, char& band);
-void ConvertUtmToWgs84(double easting, double northing, int zone, char hemisphere, NmeaPositionReport& report);
+void ConvertUtmToWgs84(double easting, double northing, int zone, char hemisphere, NmeaReport& report);
 
 // Определяем допустимый порог погрешности (Эпсилон)
 // Порог 1e-5 градусов соответствует точности ~1 метра на местности
@@ -85,7 +85,7 @@ void RunGeodeticTests() {
         }
 
         // ТЕСТ ОБРАТНОГО ПРЕОБРАЗОВАНИЯ (Инверсия под -ffast-math): Метры -> Градусы
-        NmeaPositionReport report;
+        NmeaReport report;
         ConvertUtmToWgs84(tc.expected_easting, tc.expected_northing, tc.expected_zone, tc.expected_hemisphere, report);
 
         std::cout << "  [Обратный ход] Ожидаемая Широта: " << tc.expected_lat << " | Полученная: " << report.latitude << std::endl;
@@ -142,7 +142,7 @@ void ConvertWgs84ToUtm(double lat, double lon, double& easting, double& northing
     band = 'N';
 }
 
-void ConvertUtmToWgs84(double easting, double northing, int zone, char hemisphere, NmeaPositionReport& report) {
+void ConvertUtmToWgs84(double easting, double northing, int zone, char hemisphere, NmeaReport& report) {
     const double a = 6378137.0; const double f = 1.0 / 298.257223563; const double k0 = 0.9996;
     const double e2 = 2.0 * f - f * f; const double e4 = e2 * e2; const double ePrime2 = e2 / (1.0 - e2);
     if (hemisphere == 'S' || hemisphere == 's') northing -= 10000000.0;
@@ -160,7 +160,7 @@ void ConvertUtmToWgs84(double easting, double northing, int zone, char hemispher
     double lat_rad = phi1_rad - (N1 * tan_phi1 / R1) * (D2 / 2.0 - (5.0 + 3.0 * T1 + 10.0 * C1) * D2 * D2 / 24.0);
     double lon_diff_rad = (D - (1.0 + 2.0 * T1 + C1) * D2 * D / 6.0) / cos_phi1;
     const double lon0_rad = ((zone - 1) * 6.0 - 180.0 + 3.0) * M_PI / 180.0;
-    report.latitude = lat_rad * 180.0 / M_PI;
-    report.longitude = (lon0_rad + lon_diff_rad) * 180.0 / M_PI;
-    report.has_position = true;
+    report.lat = lat_rad * 180.0 / M_PI;
+    report.lon = (lon0_rad + lon_diff_rad) * 180.0 / M_PI;
+    report.has_pos = true;
 }

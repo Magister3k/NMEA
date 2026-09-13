@@ -14,7 +14,7 @@ nmea_service::~nmea_service() {
     StopTimeoutCleaner();
 }
 
-void nmea_service::StartTimeoutCleaner(std::shared_ptr<nmea450_decoder> net_meta_decoder) {
+void nmea_service::StartTimeoutCleaner(std::shared_ptr<Nmea450Decoder> net_meta_decoder) {
     std::lock_guard<std::mutex> lock(m_cv_mutex);
     if (m_cleaner_thread.joinable()) return; // Защита от повторного запуска потока
 

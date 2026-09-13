@@ -1,11 +1,19 @@
 cmake_minimum_required(VERSION 3.15)
-project(HighSpeedNmeaSystem C CXX)
+project(NmeaDecoder C CXX)
 
-# Все артефакты находятся внутри выбранного build tree:
-# build/mingw или build/msvc.
-set(NMEA_RELEASE_DIR "${CMAKE_BINARY_DIR}/release")
-set(NMEA_ARCHIVE_DIR "${CMAKE_BINARY_DIR}/archive")
-set(NMEA_LIB_DIR "${CMAKE_BINARY_DIR}/lib")
+# CMake-generated project files are kept in mingw/ or msvc/.
+# Runtime artifacts are kept separately in build/<toolchain>/.
+if(MSVC)
+    set(NMEA_OUTPUT_ROOT "${CMAKE_SOURCE_DIR}/build/msvc")
+elseif(MINGW)
+    set(NMEA_OUTPUT_ROOT "${CMAKE_SOURCE_DIR}/build/mingw")
+else()
+    set(NMEA_OUTPUT_ROOT "${CMAKE_BINARY_DIR}")
+endif()
+
+set(NMEA_RELEASE_DIR "${NMEA_OUTPUT_ROOT}/release")
+set(NMEA_ARCHIVE_DIR "${NMEA_OUTPUT_ROOT}/archive")
+set(NMEA_LIB_DIR "${NMEA_OUTPUT_ROOT}/lib")
 
 foreach(CONFIG Debug Release RelWithDebInfo MinSizeRel)
     string(TOUPPER "${CONFIG}" CONFIG_UPPER)
@@ -38,13 +46,13 @@ set(PROJECT_SOURCES
     NMEA/nmea450_decoder.cpp
     NMEA/nmea_decoder.cpp
     NMEA/ais_decoder.cpp
-    NMEA/high_speed_geo_parser.cpp
+    NMEA/geo_parser.cpp
 )
 
 # �������� ������������ �����
-add_executable(nmea_high_speed ${PROJECT_SOURCES})
-nmea_set_target_output_directories(nmea_high_speed)
-target_include_directories(nmea_high_speed PRIVATE
+add_executable(nmea_decoder ${PROJECT_SOURCES})
+nmea_set_target_output_directories(nmea_decoder)
+target_include_directories(nmea_decoder PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/NMEA
 )
@@ -53,7 +61,7 @@ target_include_directories(nmea_high_speed PRIVATE
 # 2. ��������� ����������� ���������� � FAST-MATH
 # ====================================================================
 if(MSVC)
-    target_compile_options(nmea_high_speed PRIVATE 
+    target_compile_options(nmea_decoder PRIVATE 
         /O2          # ������������ ����������� �� ��������
         /Oi          # ��������� ���������� (intrinsic) �������
         /Ot          # ������������ ����������� �������� ����� ��������
@@ -65,7 +73,7 @@ if(MSVC)
     message(STATUS "[MSVC OPTIMIZATION] ������� ���������������� �������������� ����� /fp:fast � ���������� AVX2.")
 else()
     # ��������� ��� ������������ GCC � Clang (Linux / MinGW)
-    target_compile_options(nmea_high_speed PRIVATE 
+    target_compile_options(nmea_decoder PRIVATE 
         -O3                 # ������������ ������� ����������� �����������
         -ffast-math         # ��������� ���������������� ���������� (IEEE 754 bypass)
         -march=native       # ����������� ��� ������� ����������� ���������� �����
@@ -74,7 +82,7 @@ else()
         -Wextra             # �������������� �������������� ��� ������� ����
     )
     # �������� ��������� ���������� POSIX ������� ��� ������ �������� GC
-    target_link_libraries(nmea_high_speed PRIVATE pthread)
+    target_link_libraries(nmea_decoder PRIVATE pthread)
     message(STATUS "[GCC/CLANG OPTIMIZATION] �������� ����� -O3, -ffast-math � ����-������������ ��� ����������� -march=native.")
 endif()
 
@@ -99,8 +107,8 @@ add_test(NAME GeodeticMathVerification COMMAND test_math)
 
 if(WIN32)
     add_library(nmea_decoder_ext SHARED
-        Main.cpp
-        NmeaModuleExt.cpp
+        main.cpp
+        nmea_decoder.cpp
         NMEA/nmea_decoder.cpp
         NMEA/nmea450_decoder.cpp
     )
